@@ -31,7 +31,8 @@ function playerInputs(){
 		zKeyReal = 1;
 		zKeyTimer--;
 	} else {
-		//
+		zKeyReal = 0;
+	}
 	
 	if (zKeyReal) {
 		var _nbj = 30;
