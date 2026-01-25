@@ -48,4 +48,5 @@ function playerInputs(){
 	//movement
 	movDirection = rightKey-leftKey;
 	xSpeed = movDirection * movSpeed;
+	}
 }
