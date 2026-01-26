@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"Script1",
+  "%Name":"InputScript",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"Script1",
+  "name":"InputScript",
   "parent":{
     "name":"CSForest2",
     "path":"CSForest2.yyp",
