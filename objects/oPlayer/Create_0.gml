@@ -10,7 +10,7 @@ ySpeed = 0;
 
 grav = 0.275;
 termVelocity = 6;
-jumpSpeed = -3.8;
+jumpSpeed = -3.3;
 
 jumpHoldTime = 0;
 

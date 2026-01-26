@@ -7,7 +7,14 @@ playerInputs();
 var _subpix = 0.5;
 
 if place_meeting(x + xSpeed, y, oWall) {
-	
+	//slopes (say thanks basil)
+	if !place_meeting(x+xSpeed, y-abs(xSpeed)-1, oWall) {
+		
+		while place_meeting(x+xSpeed, y, oWall) {
+			y-=_subpix;
+		}
+		
+	} else {
 	//closes all distance between player and wall:
 	var _thing = _subpix*sign(xSpeed);
 	while !place_meeting(x+_thing,y,oWall) {
@@ -15,9 +22,19 @@ if place_meeting(x + xSpeed, y, oWall) {
 	}
 	
 	xSpeed=0;
+	}
 }
 
+//slopes pt2
+if (ySpeed>=0) && !place_meeting(x+xSpeed, y+1, oWall) && place_meeting(x+xSpeed, y + abs(xSpeed)+1, oWall) {
+	while !place_meeting(x+xSpeed, y+_subpix, oWall) {
+			y+=_subpix;
+		}
+}
+
+
 x+=xSpeed;
+
 
 //Y
 
@@ -53,13 +70,16 @@ if (ySpeed>termVelocity) {
 }
 
 //y collision
-var _subpix = 0.5;
 if (place_meeting(x, y+ySpeed, oWall)) {
 	
 	//closes all distance between player and y:
 	var _thing = _subpix*sign(ySpeed);
 	while !place_meeting(x,y+_thing,oWall) {
 		y+=_thing;
+	}
+	
+	if (ySpeed<0) {
+		jumpHoldTime=0;
 	}
 	
 	ySpeed=0;
@@ -69,7 +89,13 @@ if ySpeed==0 && place_meeting(x, y+1, oWall) {
 	onGround = true;
 } else {
 	onGround = false;
+}
 
 y+=ySpeed
 
-}
+
+
+
+
+
+
