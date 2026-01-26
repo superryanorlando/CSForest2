@@ -29,15 +29,34 @@ if (ySpeed>termVelocity) {
 
 //jump
 
-if (zKeyReal&&place_meeting(x, y+1, oWall)) {
+if (zKeyReal&&onGround) {
 	ySpeed = jumpSpeed;
+	
+	jumpHoldTime = 10;
 }
 
-//die
+
+if (jumpHoldTime>0) {
+	ySpeed=jumpSpeed;
+	jumpHoldTime--;
+}
+
+if !zKey {
+	jumpHoldTime=0;
+	if (ySpeed<0) {
+		ySpeed*=0.5;
+	}
+}
+
+if (ySpeed>termVelocity) {
+	ySpeed=termVelocity
+}
+
+//y collision
 var _subpix = 0.5;
 if (place_meeting(x, y+ySpeed, oWall)) {
 	
-	//closes all distance between player and ceiling:
+	//closes all distance between player and y:
 	var _thing = _subpix*sign(ySpeed);
 	while !place_meeting(x,y+_thing,oWall) {
 		y+=_thing;
@@ -46,6 +65,11 @@ if (place_meeting(x, y+ySpeed, oWall)) {
 	ySpeed=0;
 }
 
+if ySpeed==0 && place_meeting(x, y+1, oWall) {
+	onGround = true;
+} else {
+	onGround = false;
+
 y+=ySpeed
 
-
+}

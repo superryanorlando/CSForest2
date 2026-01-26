@@ -34,14 +34,7 @@ function playerInputs(){
 		zKeyReal = 0;
 	}
 	
-	if (zKeyReal) {
-		var _nbj = 30;
-		while (_nbj>0) {
-			zKeyPressed = true;
-			_nbj--;
-		}
-		
-	}
+	
 	zKeyPressed = keyboard_check_pressed(ord("Z"))
 	xKeyPressed = keyboard_check_pressed(ord("X"))
 	cKeyPressed = keyboard_check_pressed(ord("C"))
