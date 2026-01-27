@@ -7,9 +7,15 @@ playerInputs();
 //collision stuffs
 
 //stupid hazards
-if place_meeting(x+xSpeed, y+ySpeed, oHazard){
+if place_meeting(x+xSpeed, y+ySpeed, oHazard) {
+	DamageScript(2);
+	
+}
+
+if place_meeting(x, y, oProjectile) && !invulnerable{
 	DamageScript(2);
 }
+
 
 if dead {
 	game_end();
@@ -65,7 +71,6 @@ if (ySpeed>termVelocity) {
 
 if (zKeyReal&&onGround) {
 	ySpeed = jumpSpeed;
-	
 	jumpHoldTime = 10;
 }
 
@@ -107,8 +112,6 @@ if ySpeed==0 && place_meeting(x, y+1, oWall) {
 } else {
 	onGround = false;
 }
-
-
 
 y+=ySpeed
 

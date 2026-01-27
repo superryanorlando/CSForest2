@@ -1,9 +1,11 @@
 function DamageScript(dmg){
 	
-	oPlayer.hp-=dmg;
+	hp-=dmg;
+	invulnerable = true;
+	alarm[0] = 45;
 	
-	if (oPlayer.hp<=0) {
-		oPlayer.hp = 0;
-		oPlayer.dead = true;
+	if (hp<=0) {
+		hp = 0;
+		dead = true;
 	}
 }
