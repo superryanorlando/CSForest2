@@ -16,4 +16,10 @@ jumpHoldTime = 0;
 
 onGround = true;
 
-// 
+// hp
+maxHP = 20
+hp = maxHP;
+dead = false;
+	// 1 px between each bar. i love you rockman
+	// sprite for ONE HP block
+spr_hp = shpbar;
