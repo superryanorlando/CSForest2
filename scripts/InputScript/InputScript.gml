@@ -24,7 +24,7 @@ function playerInputs(){
 
 	
 	//jumping
-	if (zKeyPressed) {
+	if (zKeyPressed && canMove) {
 		zKeyTimer=bufferTimer;
 	}
 	if (zKeyTimer>0) {
@@ -40,6 +40,11 @@ function playerInputs(){
 	cKeyPressed = keyboard_check_pressed(ord("C"))
 
 	//movement
-	movDirection = rightKey-leftKey;
-	xSpeed = movDirection * movSpeed;
+	if (oPlayer.canMove) {
+		movDirection = rightKey-leftKey;
+		xSpeed = movDirection * movSpeed;
+	} else {
+		xSpeed = 0;
+	}
+	
 	}

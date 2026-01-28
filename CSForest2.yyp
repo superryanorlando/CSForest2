@@ -36,6 +36,7 @@
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"DamageScript","path":"scripts/DamageScript/DamageScript.yy",},},
     {"id":{"name":"InputScript","path":"scripts/InputScript/InputScript.yy",},},
+    {"id":{"name":"Touching","path":"scripts/Touching/Touching.yy",},},
     {"id":{"name":"shpbar","path":"sprites/shpbar/shpbar.yy",},},
     {"id":{"name":"sPlayer","path":"sprites/sPlayer/sPlayer.yy",},},
     {"id":{"name":"sSlope","path":"sprites/sSlope/sSlope.yy",},},

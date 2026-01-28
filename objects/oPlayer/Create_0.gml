@@ -5,7 +5,7 @@ movDirection = 0;
 movSpeed = 1.85;
 xSpeed = 0;
 ySpeed = 0;
-
+canMove = true;
 // jumping/air
 
 grav = 0.275;
@@ -24,3 +24,6 @@ invulnerable = false;
 dead = false;
 	// 1 px between each bar. i love you rockman
 spr_hp = shpbar;
+
+//pretty stuff
+death_fade = 0;

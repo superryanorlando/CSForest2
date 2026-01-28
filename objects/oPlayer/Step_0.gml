@@ -1,25 +1,11 @@
-//thing
+//makes player front layer
 depth = -10000;
 
-// inputs
+//Inputs
 playerInputs();
 
-//collision stuffs
+//Collision stuffs
 
-//stupid hazards
-if place_meeting(x+xSpeed, y+ySpeed, oHazard) {
-	DamageScript(2);
-	
-}
-
-if place_meeting(x, y, oProjectile) && !invulnerable{
-	DamageScript(2);
-}
-
-
-if dead {
-	game_end();
-}
 
 //X
 var _subpix = 0.5;
@@ -115,6 +101,12 @@ if ySpeed==0 && place_meeting(x, y+1, oWall) {
 
 y+=ySpeed
 
+
+
+//pretty stuff
+if (dead) {
+    death_fade = min(death_fade + 0.02, 1);
+}
 
 
 

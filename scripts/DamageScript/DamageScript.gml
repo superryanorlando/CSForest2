@@ -1,15 +1,18 @@
 function DamageScript(dmg){
 	
-	hp-=dmg;
-	invulnerable = true;
-	alarm[0] = 45;
+	oPlayer.hp-=dmg;
+	oPlayer.invulnerable = true;
+	oPlayer.canMove = false;
 	
-	
-	xSpeed = -60 * movDirection;
-	
-	
-	if (hp<=0) {
-		hp = 0;
-		dead = true;
+	if (oPlayer.hp<=0) {
+		oPlayer.hp = 0;
+		oPlayer.dead = true;
+		oPlayer.canMove = false;
+		oPlayer.image_alpha = 0;
+		oPlayer.alarm[2] = 120;
+	} else {
+		oPlayer.alarm[0] = 70;
+		oPlayer.alarm[1] = 25;
 	}
+	
 }
