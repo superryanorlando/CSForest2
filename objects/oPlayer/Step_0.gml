@@ -6,7 +6,6 @@ playerInputs();
 
 //Collision stuffs
 
-
 //X
 var _subpix = 0.5;
 
@@ -103,9 +102,19 @@ y+=ySpeed
 
 
 
-//pretty stuff
-if (dead) {
-    death_fade = min(death_fade + 0.02, 1);
+//skibtastic
+if (instance_exists(oBossDoor)) {
+    var door = instance_nearest(x, y, oBossDoor);
+
+    if (door.state == "locking") {  // only lock after door closes
+        if (x > door.x + door.lock_distance) {
+            canMove = false;
+        } else {
+            canMove = true;
+        }
+    } else {
+        canMove = true;
+    }
 }
 
 

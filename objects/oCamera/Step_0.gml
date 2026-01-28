@@ -8,6 +8,42 @@ var camWidth = camera_get_view_width(view_camera[0]);
 var camX = oPlayer.x - camWidth/2;
 var camY = oPlayer.y - camHeight/2;
 
+
+clamp(oPlayer.x, actualCamX-camWidth, actualCamX+camWidth)
+
+//thing
+if (instance_exists(oBossDoor)) {
+    var door = instance_nearest(oPlayer.x, oPlayer.y, oBossDoor);
+
+    switch (door.state) {
+
+        // camera cant scroll past door
+        case "closed":
+        case "opening":
+            camX = min(camX, door.x - camWidth);
+            break;
+
+        // camera slides into boss room...holy tuff
+        case "locking":
+            camX = actualCamX + 4; 
+            if (camX >= door.x-door.sprite_width) {
+                camX = door.x-door.sprite_width;
+                door.state = "closing";
+            }
+            break;
+
+        // Boss fight — camera locked to arena
+		case "closing":
+            camX = max(camX, door.x-door.sprite_width);
+            break;
+        case "locked":
+            camX = max(camX, door.x-door.sprite_width);
+            break;
+    }
+
+//
+
+
 camX = clamp(camX, 0, room_width-camWidth);
 camY = clamp(camY, 0, room_height-camHeight);
 
@@ -15,3 +51,13 @@ actualCamX += (camX-actualCamX)*camFollowSpeed;
 actualCamY += (camY-actualCamY)*camFollowSpeed;
 
 camera_set_view_pos(view_camera[0], actualCamX, actualCamY);
+
+//cool stuff
+if (instance_exists(oBossDoor)) {
+    var door = instance_nearest(x, y, oBossDoor);
+
+    if (door.state == "closed" || door.state == "opening") {
+        actualCamX = clamp(camX, 0, door.x);
+    }
+}
+}
