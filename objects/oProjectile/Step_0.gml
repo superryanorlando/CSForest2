@@ -1,5 +1,5 @@
 if Touching(oPlayer) && !oPlayer.invulnerable{
-	DamageScript(2);
+	HPScript(-2);
 }
 
 //if place_meeting(x, y, oPlayer) && !oPlayer.invulnerable{

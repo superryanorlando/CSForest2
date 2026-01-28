@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"DamageScript",
+  "%Name":"HPScript",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"DamageScript",
+  "name":"HPScript",
   "parent":{
     "name":"CSForest2",
     "path":"CSForest2.yyp",

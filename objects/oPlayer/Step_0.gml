@@ -6,6 +6,12 @@ playerInputs();
 
 //Collision stuffs
 
+
+//did you fall into a bottomless pit...
+if (y>room_height && !dead) {
+	HPScript(-9999);
+}
+
 //X
 var _subpix = 0.5;
 
@@ -48,6 +54,7 @@ x+=xSpeed;
 
 //gravity
 ySpeed+=grav;
+
 if (ySpeed>termVelocity) {
 	ySpeed = termVelocity
 } 
@@ -77,20 +84,7 @@ if (ySpeed>termVelocity) {
 }
 
 //y collision
-if (place_meeting(x, y+ySpeed, oWall)) {
-	
-	//closes all distance between player and y:
-	var _thing = _subpix*sign(ySpeed);
-	while !place_meeting(x,y+_thing,oWall) {
-		y+=_thing;
-	}
-	
-	if (ySpeed<0) {
-		jumpHoldTime=0;
-	}
-	
-	ySpeed=0;
-}
+Gravity(oPlayer);
 
 if ySpeed==0 && place_meeting(x, y+1, oWall) {
 	onGround = true;
@@ -103,19 +97,27 @@ y+=ySpeed
 
 
 //skibtastic
-if (instance_exists(oBossDoor)) {
+
+if dead {
+	canMove = false;
+} else {
+	if (instance_exists(oBossDoor)) {
     var door = instance_nearest(x, y, oBossDoor);
 
-    if (door.state == "locking") {  // only lock after door closes
+    if (door.state == "locking" || door.state == "closing") {  // only lock after door closes
         if (x > door.x + door.lock_distance) {
             canMove = false;
         } else {
             canMove = true;
         }
+    } else if (door.state == "opening") {
+        canMove = false;
     } else {
-        canMove = true;
-    }
+		canMove = true;
+	}
+} 
 }
+
 
 
 

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Gravity",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Gravity",
+  "parent":{
+    "name":"CSForest2",
+    "path":"CSForest2.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
