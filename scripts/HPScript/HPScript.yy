@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"HPScript",
   "parent":{
-    "name":"CSForest2",
-    "path":"CSForest2.yyp",
+    "name":"scripts",
+    "path":"folders/scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

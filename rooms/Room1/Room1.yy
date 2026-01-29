@@ -1771,8 +1771,8 @@
   ],
   "name":"Room1",
   "parent":{
-    "name":"CSForest2",
-    "path":"CSForest2.yyp",
+    "name":"rooms",
+    "path":"folders/rooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{
