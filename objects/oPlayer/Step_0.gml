@@ -8,7 +8,7 @@ playerInputs();
 
 
 //did you fall into a bottomless pit...
-if (y>room_height && !dead) {
+if (y-sprite_height>room_height && !dead) {
 	HPScript(-9999);
 }
 

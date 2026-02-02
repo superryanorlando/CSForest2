@@ -9,9 +9,8 @@ canMove = true;
 // jumping/air
 
 grav = 0.275;
-termVelocity = 6;
 jumpSpeed = -3.3;
-
+termVelocity = 6;
 jumpHoldTime = 0;
 
 onGround = true;

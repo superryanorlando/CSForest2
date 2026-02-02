@@ -1,7 +1,11 @@
 function HPScript(num){
 	
-	if (num<0) {
+	if (num+oPlayer.hp>oPlayer.maxHP) {
+		oPlayer.hp = oPlayer.maxHP;
+	} else {
 		oPlayer.hp+=num;
+	}
+	if (num<0) {
 		oPlayer.invulnerable = true;
 		oPlayer.canMove = false;
 	
@@ -15,6 +19,5 @@ function HPScript(num){
 			oPlayer.alarm[1] = 25;
 		}
 	}
-	
 	
 }

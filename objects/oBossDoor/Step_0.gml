@@ -17,15 +17,15 @@ switch (state) {
 
     case "open":
         if (player.x > x + sprite_width + lock_distance) {
-            state = "locking";
+            state = "closing";
         }
         break;
 
     case "closing":
         y += open_speed;
-        if (y >= closed_y) {
-            y = closed_y;
-            state = "locked";
-        }
-        break;
+	      if (y >= closed_y) {
+	          y = closed_y;
+	          state = "locked";
+	       }
+		break;
 }
