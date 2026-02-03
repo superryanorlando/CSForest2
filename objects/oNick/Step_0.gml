@@ -9,31 +9,39 @@ if (y>room_height && !dead) {
 
 if (instance_exists(oPlayer)) {
     
+	if oPlayer.x<id.x {
+		id.direction=180;
+	} else {
+		id.direction=0;
+	}
     
     var _dist = distance_to_object(oPlayer);
-    if (_dist < 80 && canShoot == true) {
+	
+	 
+    if (_dist > 256) {
+        exit; 
+    }
+	
+    if (_dist < 100 && id.canShoot == true) {
         
         // --- FIRE PROJECTILE ---
-        var _inst = instance_create_layer(x, y, "Instances", oProjectile);
+        var _inst = instance_create_layer(x-8, y-(sprite_height/1.5), "Instances", oProjectile);
         
         
         with (_inst) {
-            speed = 10;
-            
-            // Assuming image_xscale determines facing (1 is Right, -1 is Left)
-            if (other.image_xscale == 1) {
-                direction = 0;   // Right
-            } else {
-                direction = 180; // Left
-            }
-            
+            spd = 3.5;
+			direction = other.direction;
     
         }
         
-        // --- RESET COOLDOWN ---
+       
         canShoot = false;
-        alarm[0] = 45; // Set Alarm 0 to trigger later
+        alarm[0] = 90; // Set Alarm 0 to trigger later
     }
+}
+
+if (dead) {
+	instance_destroy();
 }
 
 
@@ -75,7 +83,7 @@ x+=xSpeed;
 //Y
 
 //gravity
-EnemyG(oNick);
+EnemyG(id);
 
 
 
