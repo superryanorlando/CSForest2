@@ -12,6 +12,7 @@ function playerInputs(){
 	leftKey = keyboard_check(vk_left)
 	upKey = keyboard_check(vk_up)
 	downKey = keyboard_check(vk_down)
+	test = keyboard_check(ord("Z")) 
 	//action buttons
 	zKey = keyboard_check(ord("Z"))
 	xKey = keyboard_check(ord("X"))
