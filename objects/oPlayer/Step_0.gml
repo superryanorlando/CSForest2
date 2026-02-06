@@ -63,9 +63,17 @@ if (ySpeed>termVelocity) {
 
 if (zKeyReal&&onGround) {
 	ySpeed = jumpSpeed;
+	sprite_index = sGoddardJump0;
+	image_speed = 0;
 	jumpHoldTime = 10;
 }
 
+if (jumpHoldTime> 9) {
+	sprite_index = sGoddardJump;
+	image_speed = 0;
+	ySpeed=jumpSpeed;
+	jumpHoldTime--;
+}
 
 if (jumpHoldTime>0) {
 	ySpeed=jumpSpeed;

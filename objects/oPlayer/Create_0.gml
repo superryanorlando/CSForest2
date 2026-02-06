@@ -6,6 +6,8 @@ movSpeed = 2.15;
 xSpeed = 0;
 ySpeed = 0;
 canMove = true;
+sprite_index = sGoddardIdle;
+image_speed = 0;
 // jumping/air
 
 grav = 0.275;
