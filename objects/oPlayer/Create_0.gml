@@ -2,14 +2,14 @@
 inputSetup();
 // moving
 movDirection = 0;
-movSpeed = 1.85;
+movSpeed = 2.15;
 xSpeed = 0;
 ySpeed = 0;
 canMove = true;
 // jumping/air
 
 grav = 0.275;
-jumpSpeed = -3.3;
+jumpSpeed = -3.6;
 termVelocity = 6;
 jumpHoldTime = 0;
 
