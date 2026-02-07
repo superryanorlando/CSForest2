@@ -23,7 +23,7 @@
   ],
   "name":"sGoddardFall",
   "nineSlice":null,
-  "origin":7,
+  "origin":9,
   "parent":{
     "name":"player",
     "path":"folders/sprites/player.yy",
@@ -76,7 +76,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":16,
-    "yorigin":50,
+    "yorigin":47,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

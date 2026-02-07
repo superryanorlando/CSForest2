@@ -25,7 +25,7 @@
   ],
   "name":"sGoddardAtk2",
   "nineSlice":null,
-  "origin":7,
+  "origin":9,
   "parent":{
     "name":"attacks",
     "path":"folders/sprites/player/attacks.yy",
@@ -84,7 +84,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":16,
-    "yorigin":50,
+    "yorigin":47,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

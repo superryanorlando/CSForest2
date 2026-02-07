@@ -49,8 +49,8 @@
     {"id":{"name":"oSlope","path":"objects/oSlope/oSlope.yy",},},
     {"id":{"name":"oTitle","path":"objects/oTitle/oTitle.yy",},},
     {"id":{"name":"oWall","path":"objects/oWall/oWall.yy",},},
+    {"id":{"name":"bestlevelever","path":"rooms/bestlevelever/bestlevelever.yy",},},
     {"id":{"name":"ForestZone","path":"rooms/ForestZone/ForestZone.yy",},},
-    {"id":{"name":"mediocritydisgrace","path":"rooms/mediocritydisgrace/mediocritydisgrace.yy",},},
     {"id":{"name":"Menu","path":"rooms/Menu/Menu.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"EnemyG","path":"scripts/EnemyG/EnemyG.yy",},},
@@ -88,7 +88,7 @@
     {"roomId":{"name":"Menu","path":"rooms/Menu/Menu.yy",},},
     {"roomId":{"name":"ForestZone","path":"rooms/ForestZone/ForestZone.yy",},},
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
-    {"roomId":{"name":"mediocritydisgrace","path":"rooms/mediocritydisgrace/mediocritydisgrace.yy",},},
+    {"roomId":{"name":"bestlevelever","path":"rooms/bestlevelever/bestlevelever.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

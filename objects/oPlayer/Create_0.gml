@@ -2,7 +2,7 @@
 inputSetup();
 // moving
 movDirection = 0;
-movSpeed = 2.15;
+movSpeed = 1.95;
 xSpeed = 0;
 ySpeed = 0;
 canMove = true;
@@ -11,7 +11,7 @@ image_speed = 0;
 // jumping/air
 
 grav = 0.275;
-jumpSpeed = -3.6;
+jumpSpeed = -3.45;
 termVelocity = 6;
 jumpHoldTime = 0;
 

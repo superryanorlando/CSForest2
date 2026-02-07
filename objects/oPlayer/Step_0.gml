@@ -12,6 +12,12 @@ if (y-sprite_height>room_height && !dead) {
 	HPScript(-9999);
 }
 
+if (rightKey) {
+	image_xscale = -1;
+} else if (leftKey) {
+	image_xscale = 1;
+}
+
 //X
 var _subpix = 0.5;
 
@@ -64,13 +70,12 @@ if (ySpeed>termVelocity) {
 if (zKeyReal&&onGround) {
 	ySpeed = jumpSpeed;
 	sprite_index = sGoddardJump0;
-	image_speed = 0;
 	jumpHoldTime = 10;
 }
 
 if (jumpHoldTime> 9) {
 	sprite_index = sGoddardJump;
-	image_speed = 0;
+	
 	ySpeed=jumpSpeed;
 	jumpHoldTime--;
 }
