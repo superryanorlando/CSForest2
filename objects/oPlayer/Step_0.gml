@@ -118,10 +118,11 @@ if (ySpeed >= 0 && place_meeting(x, y+1, oWall)) {
 y+=ySpeed + vY; // Note: If vY is meant to be a one-time blast, use y += (ySpeed + vY)
 
 // Updated Bounce Pad Logic
-if Touching(oBouncePad) {
-    vX = 15;           
-    vY = -20;          
-    jumpHoldTime = 0;  
+var pad = instance_place(x, y, oBouncePad);
+if (pad != noone) {
+    vX = 15;
+    vY = -20;
+    jumpHoldTime = 0;
     onGround = false;
 }
 
