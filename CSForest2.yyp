@@ -35,6 +35,7 @@
   "name":"CSForest2",
   "resources":[
     {"id":{"name":"oBossDoor","path":"objects/oBossDoor/oBossDoor.yy",},},
+    {"id":{"name":"oBouncePad","path":"objects/oBouncePad/oBouncePad.yy",},},
     {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},},
     {"id":{"name":"oDharma","path":"objects/oDharma/oDharma.yy",},},
     {"id":{"name":"oEnemy","path":"objects/oEnemy/oEnemy.yy",},},
@@ -61,6 +62,7 @@
     {"id":{"name":"pressbutton","path":"sprites/pressbutton/pressbutton.yy",},},
     {"id":{"name":"sBoss","path":"sprites/sBoss/sBoss.yy",},},
     {"id":{"name":"sBossDoor","path":"sprites/sBossDoor/sBossDoor.yy",},},
+    {"id":{"name":"sBouncePad","path":"sprites/sBouncePad/sBouncePad.yy",},},
     {"id":{"name":"sGoddard","path":"sprites/sGoddard/sGoddard.yy",},},
     {"id":{"name":"sGoddardAtk1","path":"sprites/sGoddardAtk1/sGoddardAtk1.yy",},},
     {"id":{"name":"sGoddardAtk2","path":"sprites/sGoddardAtk2/sGoddardAtk2.yy",},},

@@ -14,7 +14,9 @@ grav = 0.275;
 jumpSpeed = -4;
 termVelocity = 6;
 jumpHoldTime = 0;
-
+vX = 0;
+vY = 0;
+vDecel = 0.05;
 onGround = true;
 
 // hp
