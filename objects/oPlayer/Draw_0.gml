@@ -1,6 +1,13 @@
 //anim
 draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 
+// flash when hurt
+if (invulnerable) {
+    if ((current_time div 4) mod 2 == 0) {
+        visible = false;
+    }
+}
+
 if (abs(xSpeed)>0) {
 	sprite_index = sGoddardWalk;
 	image_speed = 1;
@@ -20,9 +27,3 @@ if (!onGround) {
 }
 
 
-// flash when hurt
-if (invulnerable) {
-    if ((current_time div 4) mod 2 == 0) {
-        draw_self();
-    }
-}

@@ -118,19 +118,12 @@ if (ySpeed >= 0 && place_meeting(x, y+1, oWall)) {
 y+=ySpeed + vY; // Note: If vY is meant to be a one-time blast, use y += (ySpeed + vY)
 
 // Updated Bounce Pad Logic
-var pad = instance_place(x, y, oBouncePad); // overlap anywhere
+var pad = instance_place(x, y, oBouncePad);
 if (pad != noone) {
     vX = 15;
-    vY = -15;
-
-    // also shove into your main vertical speed so Gravity() can't "ground-snap" it
-    ySpeed = min(ySpeed, -20);
-
+    vY = -20;
     jumpHoldTime = 0;
     onGround = false;
-
-    // tiny nudge upward so you're not still intersecting ground/pad next frame
-    y -= 1;
 }
 
 //skibtastic
