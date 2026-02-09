@@ -27,6 +27,80 @@ if (rightKey) {
 	image_xscale = 1;
 }
 
+
+// --- MELEE ATTACK SYSTEM ---
+
+// Reduce combo timer over time
+if (comboTimer > 0) comboTimer--;
+else comboIndex = 1; // Reset combo if too much time passes
+
+// Trigger Attack
+if (xKeyPressed && !isAttacking && onGround) {
+    isAttacking = true;
+    canMove = false;
+    image_index = 0;
+    holdTimer = 0;
+    canInputNext = false;
+    
+    // Select Sprite
+    sprite_index = asset_get_index("sGoddardAtk" + string(comboIndex));
+    
+    // Hitbox Logic: Define area 6px wide, 35px tall
+    // We adjust the X offset based on which way the player faces (image_xscale)
+    var _hitboxW = 6;
+    var _hitboxH = 35;
+    var _xOffset = (image_xscale == -1) ? 5 : -5; // Adjust based on your sprite origin
+    
+    var _list = ds_list_create();
+    var _num = collision_rectangle(x + _xOffset, y - (_hitboxH/2), x + _xOffset + (_hitboxW * -image_xscale), y + (_hitboxH/2), oEnemy, false, true);
+    
+    // If an enemy is found, reduce HP
+    // Note: To prevent hitting every frame, we do this once per button press
+    var _inst = instance_place(x + (_xOffset * -image_xscale), y, oEnemy);
+    with (oEnemy) {
+        if (place_meeting(x, y, other)) { // Basic check for simplicity
+             if (collision_rectangle(other.x + _xOffset, other.y - (_hitboxH/2), other.x + _xOffset + (_hitboxW * -other.image_xscale), other.y + (_hitboxH/2), id, false, false)) {
+                hp -= 1;
+             }
+        }
+    }
+    ds_list_destroy(_list);
+}
+
+// Handle Animation & "Holding" Frames
+if (isAttacking) {
+    image_speed = 1;
+    
+    // Check if we reached the last frame
+    if (image_index >= image_number - 1) {
+        image_speed = 0; // Pause animation
+        image_index = image_number - 1; // Stay on last frame
+        holdTimer++;
+        
+        // On the 2nd frame of holding, allow a combo follow-up
+        if (holdTimer >= 2) canInputNext = true;
+        
+        // If we pressed X again during the hold
+        if (canInputNext && xKeyPressed) {
+            isAttacking = false; // Reset to trigger new attack
+            comboIndex++;
+            if (comboIndex > 4) comboIndex = 1;
+            comboTimer = comboWindow;
+        }
+        
+        // After 5 frames, finish the attack
+        if (holdTimer >= 5) {
+            isAttacking = false;
+            canMove = true;
+            comboIndex++;
+            if (comboIndex > 4) comboIndex = 1;
+            comboTimer = comboWindow;
+        }
+    }
+}
+
+
+
 //X
 var _subpix = 0.5;
 
@@ -115,7 +189,7 @@ if (ySpeed >= 0 && place_meeting(x, y+1, oWall)) {
 	onGround = false;
 }
 
-y+=ySpeed + vY; // Note: If vY is meant to be a one-time blast, use y += (ySpeed + vY)
+y+=ySpeed + vY; 
 
 // Updated Bounce Pad Logic
 var pad = instance_place(x, y, oBouncePad);
