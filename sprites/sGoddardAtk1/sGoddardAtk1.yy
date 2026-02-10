@@ -3,7 +3,7 @@
   "%Name":"sGoddardAtk1",
   "bboxMode":0,
   "bbox_bottom":46,
-  "bbox_left":2,
+  "bbox_left":3,
   "bbox_right":28,
   "bbox_top":8,
   "collisionKind":1,

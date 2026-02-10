@@ -22,21 +22,10 @@ if (instance_exists(oPlayer)) {
         exit; 
     }
 	
-    if (_dist < 100 && id.canShoot == true) {
+    if (_dist < 100 && id.canShoot == true && !cooldown) {
+        alarm[1] = 5
+		cooldown = true;
         
-        // --- FIRE PROJECTILE ---
-        var _inst = instance_create_layer(x-8, y-(sprite_height/1.5), "Instances", oProjectile);
-        
-        
-        with (_inst) {
-            spd = 3.5;
-			direction = other.direction;
-    
-        }
-        
-       
-        canShoot = false;
-        alarm[0] = 90; // Set Alarm 0 to trigger later
     }
 }
 

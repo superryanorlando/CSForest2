@@ -1,0 +1,2 @@
+isAttacking = false;
+cooldown = false;
