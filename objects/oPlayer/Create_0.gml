@@ -32,12 +32,12 @@ vineSpeed = 2.0;
 	// 1 px between each bar. i love you rockman
 spr_hp = shpbar;
 
-// Melee Attack Variables
+// --- MELEE ATTACK VARIABLES ---
 isAttacking = false;
-comboIndex = 1;      // Which attack (1-4)
-comboTimer = 0;      // Time allowed between hits
-comboWindow = 30;    // How many frames the player has to hit 'X' again (0.5s at 60fps)
-holdTimer = 0;       // For holding the last frame
-canInputNext = false; // Becomes true on the 2nd frame of the "hold"
+comboIndex = 1;         // Which attack (1-4)
+attackDuration = 18;    // How long the attack lasts (locked in place)
+attackTimer = 0;        // Counter for the current attack
+comboResetTimer = 0;    // Counter to reset combo to 1 if you wait too long
+enemy_hit_list = ds_list_create(); // Prevents multi-hits in one swing
 
 

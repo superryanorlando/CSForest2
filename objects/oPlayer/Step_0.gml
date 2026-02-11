@@ -30,74 +30,110 @@ if (rightKey) {
 
 // --- MELEE ATTACK SYSTEM ---
 
-// Reduce combo timer over time
-if (comboTimer > 0) comboTimer--;
-else comboIndex = 1; // Reset combo if too much time passes
+// 1. COMBO RESET LOGIC
+// If we are not attacking, count down the reset timer. 
+// If it hits 0, the next attack starts back at Animation 1.
+if (!isAttacking) {
+    if (comboResetTimer > 0) {
+        comboResetTimer--;
+    } else {
+        comboIndex = 1;
+    }
+}
 
-// Trigger Attack
-if (xKeyPressed && !isAttacking && onGround) {
+// 2. TRIGGER ATTACK
+// Trigger if X is pressed, we are on the ground, and not currently locked in an animation
+if (xKeyPressed && onGround && !isAttacking) {
     isAttacking = true;
     canMove = false;
-    image_index = 0;
-    holdTimer = 0;
-    canInputNext = false;
     
-    // Select Sprite
-    sprite_index = asset_get_index("sGoddardAtk" + string(comboIndex));
+    // Stop all momentum immediately so we don't slide while attacking
+    xSpeed = 0; 
+    vX = 0;     
     
-    // Hitbox Logic: Define area 6px wide, 35px tall
-    // We adjust the X offset based on which way the player faces (image_xscale)
-    var _hitboxW = 6;
-    var _hitboxH = 35;
-    var _xOffset = (image_xscale == -1) ? 5 : -5; // Adjust based on your sprite origin
+    // Set duration
+    attackTimer = attackDuration;
     
-    var _list = ds_list_create();
-    var _num = collision_rectangle(x + _xOffset, y - (_hitboxH/2), x + _xOffset + (_hitboxW * -image_xscale), y + (_hitboxH/2), oEnemy, false, true);
+    // Clear the hit list so we can hit enemies again with this new swing
+    ds_list_clear(enemy_hit_list);
     
-    // If an enemy is found, reduce HP
-    // Note: To prevent hitting every frame, we do this once per button press
-    var _inst = instance_place(x + (_xOffset * -image_xscale), y, oEnemy);
-    with (oEnemy) {
-        if (place_meeting(x, y, other)) { // Basic check for simplicity
-             if (collision_rectangle(other.x + _xOffset, other.y - (_hitboxH/2), other.x + _xOffset + (_hitboxW * -other.image_xscale), other.y + (_hitboxH/2), id, false, false)) {
-                hp -= 1;
-             }
-        }
+    // Select Sprite based on current combo index
+    image_index = 0; // Reset animation to frame 0
+    switch(comboIndex) {
+        case 1: sprite_index = sGoddardAtk1; break;
+        case 2: sprite_index = sGoddardAtk2; break;
+        case 3: sprite_index = sGoddardAtk3; break;
+        case 4: sprite_index = sGoddardAtk4; break;
     }
-    ds_list_destroy(_list);
+    
+    // Prepare the NEXT attack index (1->2->3->4->1)
+    comboIndex++;
+    if (comboIndex > 4) comboIndex = 1;
 }
 
-// Handle Animation & "Holding" Frames
+// 3. ACTIVE ATTACK BEHAVIOR
 if (isAttacking) {
-    image_speed = 1;
+    // Keep player frozen
+    canMove = false; 
+    attackTimer--;
+
+    // --- HITBOX GENERATION ---
+    // Define the rectangle coordinates based on facing direction
+    var _dir = image_xscale; // 1 or -1
     
-    // Check if we reached the last frame
-    if (image_index >= image_number - 1) {
-        image_speed = 0; // Pause animation
-        image_index = image_number - 1; // Stay on last frame
-        holdTimer++;
-        
-        // On the 2nd frame of holding, allow a combo follow-up
-        if (holdTimer >= 2) canInputNext = true;
-        
-        // If we pressed X again during the hold
-        if (canInputNext && xKeyPressed) {
-            isAttacking = false; // Reset to trigger new attack
-            comboIndex++;
-            if (comboIndex > 4) comboIndex = 1;
-            comboTimer = comboWindow;
-        }
-        
-        // After 5 frames, finish the attack
-        if (holdTimer >= 5) {
-            isAttacking = false;
-            canMove = true;
-            comboIndex++;
-            if (comboIndex > 4) comboIndex = 1;
-            comboTimer = comboWindow;
+    // Calculate X coordinates:
+    // Starts 6px away from origin. Width is 6px.
+    // Right: x+6 to x+12. Left: x-12 to x-6.
+    var _x1, _x2;
+    
+    if (_dir == 1) {
+        _x1 = x + 6;
+        _x2 = x + 12; // 6px start + 6px width
+    } else {
+        _x1 = x - 12; // 6px start + 6px width (mirrored)
+        _x2 = x - 6;
+    }
+    
+    // Calculate Y coordinates (origin is bottom, box is 32px tall)
+    var _y1 = y - 32;
+    var _y2 = y;
+
+    // Create a list to store enemies hit this frame
+    var _hits = ds_list_create();
+    var _count = collision_rectangle_list(_x1, _y1, _x2, _y2, oEnemy, false, true, _hits, false);
+
+    // If we hit something
+    if (_count > 0) {
+        for (var i = 0; i < _count; i++) {
+            var _inst = _hits[| i];
+            
+            // Check if this specific enemy has already been hit THIS SWING
+            if (ds_list_find_index(enemy_hit_list, _inst) == -1) {
+                // Apply Damage
+                if (variable_instance_exists(_inst, "hp")) {
+                    _inst.hp -= 1;
+                }
+                // Add to list so they don't get hit again until next button press
+                ds_list_add(enemy_hit_list, _inst);
+            }
         }
     }
+    // Clean up temporary list
+    ds_list_destroy(_hits);
+
+    // --- END ATTACK ---
+    if (attackTimer <= 0) {
+        isAttacking = false;
+        canMove = true;
+        // Start the 10-frame timer. If player doesn't press X within 10 frames, combo resets.
+        comboResetTimer = 10;
+        
+        // Return to Idle sprite immediately to prevent stuck animation
+        sprite_index = sGoddardIdle; 
+    }
 }
+
+
 
 
 
