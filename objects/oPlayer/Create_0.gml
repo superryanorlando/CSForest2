@@ -25,6 +25,10 @@ hp = maxHP;
 hurt_timer = 0;
 invulnerable = false;
 dead = false;
+onVine = false;
+vineSpeed = 2.0; 
+
+
 	// 1 px between each bar. i love you rockman
 spr_hp = shpbar;
 
@@ -35,4 +39,5 @@ comboTimer = 0;      // Time allowed between hits
 comboWindow = 30;    // How many frames the player has to hit 'X' again (0.5s at 60fps)
 holdTimer = 0;       // For holding the last frame
 canInputNext = false; // Becomes true on the 2nd frame of the "hold"
+
 

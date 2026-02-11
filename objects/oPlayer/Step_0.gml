@@ -200,6 +200,45 @@ if (pad != noone) {
     onGround = false;
 }
 
+var vine = instance_place(x, y, oVine);
+
+if (vine != noone) {
+    if (keyboard_check(vk_up) || keyboard_check(vk_down)) {
+        onVine = true;
+
+        // Kill momentum only
+        vX = 0;
+        vY = 0;
+        xSpeed = 0;
+    }
+} else {
+    onVine = false;
+}
+
+if (onVine) {
+
+    // Disable gravity
+    ySpeed = 0;
+    vY = 0;
+
+    var climb = 0;
+    if (keyboard_check(vk_up))   climb = -vineSpeed;
+    if (keyboard_check(vk_down)) climb =  vineSpeed;
+
+    if (!place_meeting(x, y + climb, oWall)) {
+        y += climb;
+    }
+
+    // Jump off vine
+    if (zKeyReal) {
+        onVine = false;
+        ySpeed = jumpSpeed;
+    }
+
+    exit; // VERY IMPORTANT — stops normal movement code
+}
+
+
 //skibtastic
 if dead {
 	canMove = false;
