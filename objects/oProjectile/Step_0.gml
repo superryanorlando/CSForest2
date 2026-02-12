@@ -1,5 +1,5 @@
-x += lengthdir_x(spd, direction);
-y += lengthdir_y(spd, direction);
+x += xspd
+y += yspd
 
 if Touching(oPlayer) && !oPlayer.invulnerable{
 	HPScript(-2);

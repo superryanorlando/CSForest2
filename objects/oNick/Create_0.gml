@@ -16,3 +16,7 @@ dead = false;
 
 isAttacking = false;
 sprite_index = sNickIdle;
+
+// Damage and Visuals
+flashTimer = 0;
+hpPrev = hp;

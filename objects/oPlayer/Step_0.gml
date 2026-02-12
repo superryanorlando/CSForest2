@@ -79,22 +79,20 @@ if (isAttacking) {
 
     // --- HITBOX GENERATION ---
     // Define the rectangle coordinates based on facing direction
-    var _dir = image_xscale; // 1 or -1
-    
-    // Calculate X coordinates:
-    // Starts 6px away from origin. Width is 6px.
-    // Right: x+6 to x+12. Left: x-12 to x-6.
+    var _dir = image_xscale; 
     var _x1, _x2;
     
-    if (_dir == 1) {
+    // In your code: -1 is RIGHT, 1 is LEFT
+    if (_dir == -1) { 
+        // Facing Right
         _x1 = x + 6;
-        _x2 = x + 12; // 6px start + 6px width
+        _x2 = x + 18; 
     } else {
-        _x1 = x - 12; // 6px start + 6px width (mirrored)
+        // Facing Left
+        _x1 = x - 18; 
         _x2 = x - 6;
     }
     
-    // Calculate Y coordinates (origin is bottom, box is 32px tall)
     var _y1 = y - 32;
     var _y2 = y;
 

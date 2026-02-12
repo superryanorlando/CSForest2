@@ -7,30 +7,46 @@ if (y>room_height && !dead) {
 
 //Attacking
 
+// --- HIT DETECTION & FLASHING ---
+// If current HP is less than what it was last frame, he was hit!
+if (hp < hpPrev) {
+    flashTimer = 2; // Flash for 2 frames
+    hpPrev = hp;    // Sync HP so we don't trigger the flash again until the next hit
+}
+
+// --- TURNING LOGIC ---
 if (instance_exists(oPlayer)) {
-    
-	if oPlayer.x<id.x {
-		id.direction=180;
-	} else {
-		id.direction=0;
-	}
-    
+    // Determine facing BEFORE shooting
+    if (oPlayer.x > x) {
+        image_xscale = -1; // Right
+    } else {
+        image_xscale = 1;  // Left
+    }
+
     var _dist = distance_to_object(oPlayer);
-	
-	 
-    if (_dist > 256) {
-        exit; 
-    }
-	
-    if (_dist < 100 && id.canShoot == true && !cooldown) {
-        alarm[1] = 5
-		cooldown = true;
-        
-    }
+    
+    // Stop the rest of the logic if too far away
+    if (_dist > 256) exit;
+
+    // Your existing distance and shooting logic...
+    var _dist = distance_to_object(oPlayer);
+    if (_dist < 100 && canShoot && !cooldown) {
+        isAttacking = true; // Set the animation state
+        alarm[1] = 5;       // Create the projectile in 5 frames
+        cooldown = true;
+}
+
+// Update hpPrev in case HP was healed or changed elsewhere
+hpPrev = hp;
+
+// Existing death check
+if (hp <= 0) {
+	dead = true; 
 }
 
 if (dead) {
 	instance_destroy();
+	exit;
 }
 
 
@@ -75,4 +91,4 @@ x+=xSpeed;
 EnemyG(id);
 
 
-
+}
