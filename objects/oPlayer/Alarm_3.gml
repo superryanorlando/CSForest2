@@ -6,9 +6,9 @@ var _x1, _x2;
 
 if (_dir == -1) { // Facing Right
     _x1 = x + 6;
-    _x2 = x + 18; 
+    _x2 = x + 22; 
 } else { // Facing Left
-    _x1 = x - 18; 
+    _x1 = x - 22; 
     _x2 = x - 6;
 }
 
