@@ -226,17 +226,21 @@ if (onVine) {
 
 
 //skibtastic
-if dead {
+if (dead) {
     canMove = false;
-} else {
-    if (instance_exists(oBossDoor)) {
+} 
+else if (isAttacking) {
+    // If we are attacking, canMove MUST stay false
+    canMove = false;
+} 
+else if (instance_exists(oBossDoor)) {
     var door = instance_nearest(x, y, oBossDoor);
 
     if (door.state == "locking" || door.state == "closing") {  
         if (x > door.x + door.lock_distance) {
             canMove = false;
         } else {
-            canMove = true;
+            canMove = true; 
         }
     } else if (door.state == "opening") {
         canMove = false;
@@ -244,4 +248,7 @@ if dead {
         canMove = true;
     }
 } 
+else {
+    // If no doors exist and we aren't dead or attacking, we can move!
+    canMove = true;
 }
