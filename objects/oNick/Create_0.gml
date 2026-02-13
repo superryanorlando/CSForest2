@@ -9,7 +9,7 @@ onGround = true;
 canShoot = true;
 cooldown = false;
 
-maxHP = 5
+maxHP = 3;
 hp = maxHP;
 
 dead = false;

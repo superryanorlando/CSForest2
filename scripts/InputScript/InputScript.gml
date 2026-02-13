@@ -25,7 +25,7 @@ function playerInputs(){
 
 	
 	//jumping
-	if (zKeyPressed && canMove) {
+	if (zKeyPressed) {
 		zKeyTimer=bufferTimer;
 	}
 	if (zKeyTimer>0) {
