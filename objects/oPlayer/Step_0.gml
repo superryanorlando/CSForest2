@@ -202,7 +202,7 @@ if (vpad != noone) {
     y -= 2;
 }
 if (hpad != noone) {
-    vX = 15;
+    vX = 10;
 }
 
 var vine = instance_place(x, y, oVine);
