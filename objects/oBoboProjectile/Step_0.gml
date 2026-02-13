@@ -4,7 +4,7 @@ y = startY + -1*sin(age * frequency) * amplitude;
 
 
 if (Touching(oPlayer) && !oPlayer.invulnerable) {
-    HPScript(-2);
+    HPScript(-8);
     instance_destroy();
 }
 

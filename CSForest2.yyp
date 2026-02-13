@@ -13,8 +13,8 @@
     {"$GMFolder":"","%Name":"objects","folderPath":"folders/objects.yy","name":"objects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"bosses","folderPath":"folders/objects/bosses.yy","name":"bosses","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"enemies","folderPath":"folders/objects/enemies.yy","name":"enemies","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"projectiles","folderPath":"folders/objects/projectiles.yy","name":"projectiles","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"ForestTiles","folderPath":"folders/objects/ForestTiles.yy","name":"ForestTiles","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"projectiles","folderPath":"folders/objects/projectiles.yy","name":"projectiles","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"titlestuffs","folderPath":"folders/objects/titlestuffs.yy","name":"titlestuffs","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"rooms","folderPath":"folders/rooms.yy","name":"rooms","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"scripts","folderPath":"folders/scripts.yy","name":"scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -33,7 +33,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.3.217",
+    "IDEVersion":"2024.14.2.213",
   },
   "name":"CSForest2",
   "resources":[
@@ -88,6 +88,7 @@
     {"id":{"name":"sGoddardJump0","path":"sprites/sGoddardJump0/sGoddardJump0.yy",},},
     {"id":{"name":"sGoddardWalk","path":"sprites/sGoddardWalk/sGoddardWalk.yy",},},
     {"id":{"name":"shpbar","path":"sprites/shpbar/shpbar.yy",},},
+    {"id":{"name":"shpbarold","path":"sprites/shpbarold/shpbarold.yy",},},
     {"id":{"name":"sNickIdle","path":"sprites/sNickIdle/sNickIdle.yy",},},
     {"id":{"name":"sNickThrow","path":"sprites/sNickThrow/sNickThrow.yy",},},
     {"id":{"name":"sPlayer","path":"sprites/sPlayer/sPlayer.yy",},},

@@ -20,7 +20,7 @@ vDecel = 0.05;
 onGround = true;
 
 // hp
-maxHP = 20
+maxHP = 100
 hp = maxHP;
 hurt_timer = 0;
 invulnerable = false;

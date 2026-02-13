@@ -15,7 +15,7 @@ if (hp < hpPrev) {
 }
 
 // --- TURNING LOGIC ---
-if (instance_exists(oPlayer)) {
+if (instance_exists(oPlayer) && !isAttacking) {
     // Determine facing BEFORE shooting
     if (oPlayer.x > x) {
         image_xscale = -1; // Right
