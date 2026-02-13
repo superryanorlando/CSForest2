@@ -44,8 +44,8 @@
   },
   "origin":0,
   "parent":{
-    "name":"tiles",
-    "path":"folders/sprites/tiles.yy",
+    "name":"Forest",
+    "path":"folders/sprites/tiles/Forest.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -1,17 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"oFakeA",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"oSlopeC",
+  "eventList":[],
   "managed":true,
-  "name":"oFakeA",
+  "name":"oSlopeC",
   "overriddenProperties":[],
   "parent":{
-    "name":"ForestTiles",
-    "path":"folders/objects/ForestTiles.yy",
+    "name":"Cave",
+    "path":"folders/objects/CaveTiles/Cave.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"oWall",
+    "path":"objects/oWall/oWall.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -30,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sFakeA",
-    "path":"sprites/sFakeA/sFakeA.yy",
+    "name":"sSlopeC",
+    "path":"sprites/sSlopeC/sSlopeC.yy",
   },
   "spriteMaskId":null,
   "visible":true,
