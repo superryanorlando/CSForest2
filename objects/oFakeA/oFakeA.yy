@@ -8,8 +8,8 @@
   "name":"oFakeA",
   "overriddenProperties":[],
   "parent":{
-    "name":"tiles",
-    "path":"folders/objects/tiles.yy",
+    "name":"ForestTiles",
+    "path":"folders/objects/ForestTiles.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sWall",
-    "path":"sprites/sWall/sWall.yy",
+    "name":"sFakeA",
+    "path":"sprites/sFakeA/sFakeA.yy",
   },
   "spriteMaskId":null,
   "visible":true,
