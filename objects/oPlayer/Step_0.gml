@@ -141,18 +141,25 @@ if (zKeyReal && onGround) {
     zKeyReal = 0;
 }
 
-// --- VARIABLE JUMP LOGIC (FIXED) ---
+// --- VARIABLE JUMP LOGIC (FIXED FOR PARABOLA) ---
 if (jumpHoldTime > 0) {
     ySpeed = jumpSpeed;
     jumpHoldTime--;
     sprite_index = sGoddardJump;
 }
 
-if (!zKey) {
+// Variable jump height "brake"
+// We added !isBouncing so the parabola isn't cut short if you aren't holding Z
+if (!zKey && !isBouncing) {
     jumpHoldTime = 0;
     if (ySpeed < 0) {
         ySpeed *= 0.5;
     }
+}
+
+// Reset bounce flag when falling or landing
+if (ySpeed >= 0 || onGround) {
+    isBouncing = false;
 }
 
 // Re-calculate Y after jump/gravity logic
@@ -170,23 +177,25 @@ if (ySpeed >= 0 && place_meeting(x, y+1, oWall)) {
 
 y += (ySpeed + vY); 
 
-// --- BOUNCE PAD LOGIC (FIXED) ---
+// --- BOUNCE PAD LOGIC (FIXED FOR PARABOLA) ---
 var pad  = instance_place(x, y, oBouncePad);
 var vpad = instance_place(x, y, oBouncePadV);
 var hpad = instance_place(x, y, oBouncePadH);
 
 if (pad != noone) {
     vX = 15;
-    vY = -15;
-    ySpeed = 0;           // Fix: Reset internal speed so it doesn't double-up
+    ySpeed = -10;         // Use ySpeed so gravity handles the arc
+    vY = 0;               // Reset external Y
+    isBouncing = true;    // Prevents Z-release from cutting the height
     jumpHoldTime = 0;     
     zKeyReal = 0;          
     onGround = false;
     y -= 2;
 }
 if (vpad != noone) {
-    vY = -15;
-    ySpeed = 0;           // Fix: Reset internal speed so it doesn't double-up
+    ySpeed = -10;         // Use ySpeed so gravity handles the arc
+    vY = 0;               // Reset external Y
+    isBouncing = true;    // Prevents Z-release from cutting the height
     jumpHoldTime = 0;
     zKeyReal = 0;
     onGround = false;

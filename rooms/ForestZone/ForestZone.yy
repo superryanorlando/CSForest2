@@ -121,6 +121,7 @@
     {"name":"inst_35087BDA","path":"rooms/ForestZone/ForestZone.yy",},
     {"name":"inst_574DBEC7","path":"rooms/ForestZone/ForestZone.yy",},
     {"name":"inst_1DDC5126","path":"rooms/ForestZone/ForestZone.yy",},
+    {"name":"inst_56E33A77","path":"rooms/ForestZone/ForestZone.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -240,6 +241,7 @@
         {"$GMRInstance":"v4","%Name":"inst_35087BDA","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_35087BDA","objectId":{"name":"oFakeA","path":"objects/oFakeA/oFakeA.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":102.0,"scaleY":24.0,"x":4144.0,"y":272.0,},
         {"$GMRInstance":"v4","%Name":"inst_574DBEC7","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_574DBEC7","objectId":{"name":"oBouncePad","path":"objects/oBouncePad/oBouncePad.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":4904.0,"y":432.0,},
         {"$GMRInstance":"v4","%Name":"inst_1DDC5126","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1DDC5126","objectId":{"name":"oWall","path":"objects/oWall/oWall.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":4.0,"scaleY":4.0,"x":4872.0,"y":432.0,},
+        {"$GMRInstance":"v4","%Name":"inst_56E33A77","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_56E33A77","objectId":{"name":"oBouncePadV","path":"objects/oBouncePadV/oBouncePadV.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":104.0,"y":496.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRBackgroundLayer":"","%Name":"Background","animationFPS":15.0,"animationSpeedType":0,"colour":4278190080,"depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Background","properties":[],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":null,"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
   ],

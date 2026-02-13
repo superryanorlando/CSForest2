@@ -18,6 +18,7 @@ vX = 0;
 vY = 0;
 vDecel = 0.05;
 onGround = true;
+isBouncing = false;
 
 // hp
 maxHP = 100
