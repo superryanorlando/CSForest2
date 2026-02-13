@@ -11,7 +11,7 @@ image_speed = 0;
 
 // jumping/air
 grav = 0.275;
-jumpSpeed = -4;
+jumpSpeed = -4.3;
 termVelocity = 6;
 jumpHoldTime = 0;
 vX = 0;

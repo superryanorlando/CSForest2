@@ -4,8 +4,6 @@ depth = -10000;
 //Inputs
 playerInputs();
 
-
-
 // Apply friction/gravity to external velocity BEFORE movement math
 vX = lerp(vX, 0, vDecel); 
 vY = lerp(vY, 0, vDecel);
@@ -24,7 +22,6 @@ if (!isAttacking) {
 }
 
 // 2. TRIGGER ATTACK
-// Trigger if X is pressed, we are on the ground, and not currently locked in an animation
 if (xKeyPressed && onGround && !isAttacking) {
     isAttacking = true;
     canMove = false;
@@ -72,7 +69,6 @@ if (y-sprite_height>room_height && !dead) {
 }
 
 // MOVEMENT INPUTS
-// (This now runs AFTER the jump logic, so you can turn mid-air immediately after cancelling)
 if (canMove) {
     if (rightKey) {
         image_xscale = -1;
@@ -84,7 +80,6 @@ if (canMove) {
 //X
 var _subpix = 0.5;
 
-// Use _totalX here so walls stop the momentum too
 if place_meeting(x + _totalX, y, oWall) {
     if !place_meeting(x+_totalX, y-abs(_totalX)-1, oWall) {
         while place_meeting(x+_totalX, y, oWall) {
@@ -142,27 +137,21 @@ if (zKeyReal && onGround) {
     jumpHoldTime = 10;
     onGround = false; 
     
-    // Reset the input timer so we don't double-jump accidentally
     zKeyTimer = 0; 
     zKeyReal = 0;
 }
 
-// Variable Jump Height Logic
-if (jumpHoldTime > 9) {
-    sprite_index = sGoddardJump;
-    ySpeed=jumpSpeed;
-    jumpHoldTime--;
-}
-
+// --- VARIABLE JUMP LOGIC (FIXED) ---
 if (jumpHoldTime > 0) {
-    ySpeed=jumpSpeed;
+    ySpeed = jumpSpeed;
     jumpHoldTime--;
+    sprite_index = sGoddardJump;
 }
 
-if !zKey {
-    jumpHoldTime=0;
-    if (ySpeed<0) {
-        ySpeed*=0.5;
+if (!zKey) {
+    jumpHoldTime = 0;
+    if (ySpeed < 0) {
+        ySpeed *= 0.5;
     }
 }
 
@@ -179,15 +168,32 @@ if (ySpeed >= 0 && place_meeting(x, y+1, oWall)) {
     onGround = false;
 }
 
-y+=ySpeed + vY; 
+y += (ySpeed + vY); 
 
-// Updated Bounce Pad Logic
-var pad = instance_place(x, y, oBouncePad);
+// --- BOUNCE PAD LOGIC (FIXED) ---
+var pad  = instance_place(x, y, oBouncePad);
+var vpad = instance_place(x, y, oBouncePadV);
+var hpad = instance_place(x, y, oBouncePadH);
+
 if (pad != noone) {
     vX = 15;
-    vY = -20;
-    jumpHoldTime = 0;
+    vY = -15;
+    ySpeed = 0;           // Fix: Reset internal speed so it doesn't double-up
+    jumpHoldTime = 0;     
+    zKeyReal = 0;          
     onGround = false;
+    y -= 2;
+}
+if (vpad != noone) {
+    vY = -15;
+    ySpeed = 0;           // Fix: Reset internal speed so it doesn't double-up
+    jumpHoldTime = 0;
+    zKeyReal = 0;
+    onGround = false;
+    y -= 2;
+}
+if (hpad != noone) {
+    vX = 15;
 }
 
 var vine = instance_place(x, y, oVine);
@@ -224,31 +230,23 @@ if (onVine) {
     exit; 
 }
 
-
-//skibtastic
-if (dead) {
+// Boss Door Logic
+if dead {
     canMove = false;
-} 
-else if (isAttacking) {
-    // If we are attacking, canMove MUST stay false
-    canMove = false;
-} 
-else if (instance_exists(oBossDoor)) {
-    var door = instance_nearest(x, y, oBossDoor);
+} else {
+    if (instance_exists(oBossDoor)) {
+        var door = instance_nearest(x, y, oBossDoor);
 
-    if (door.state == "locking" || door.state == "closing") {  
-        if (x > door.x + door.lock_distance) {
+        if (door.state == "locking" || door.state == "closing") {  
+            if (x > door.x + door.lock_distance) {
+                canMove = false;
+            } else {
+                canMove = true;
+            }
+        } else if (door.state == "opening") {
             canMove = false;
         } else {
-            canMove = true; 
+            canMove = true;
         }
-    } else if (door.state == "opening") {
-        canMove = false;
-    } else {
-        canMove = true;
-    }
-} 
-else {
-    // If no doors exist and we aren't dead or attacking, we can move!
-    canMove = true;
+    } 
 }
