@@ -11,7 +11,10 @@
     "name":"Cave",
     "path":"folders/objects/CaveTiles/Cave.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"oFake_1",
+    "path":"objects/oFake_1/oFake_1.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

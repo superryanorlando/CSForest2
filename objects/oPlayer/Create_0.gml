@@ -20,6 +20,7 @@ vDecel = 0.05;
 onGround = true;
 isBouncing = false;
 
+
 // hp
 maxHP = 100
 hp = maxHP;

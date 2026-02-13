@@ -11,7 +11,10 @@
     "name":"Snow",
     "path":"folders/objects/CaveTiles/Snow.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"oFake_2",
+    "path":"objects/oFake_2/oFake_2.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

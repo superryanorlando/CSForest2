@@ -5,7 +5,10 @@ depth = -10000;
 playerInputs();
 
 // Apply friction/gravity to external velocity BEFORE movement math
-vX = lerp(vX, 0, vDecel); 
+var _currentDecel = vDecel;
+if (place_meeting(x, y + 1, oIce)) _currentDecel = 0.02; 
+
+vX = lerp(vX, 0, _currentDecel);
 vY = lerp(vY, 0, vDecel);
 if (abs(vY) < 0.1) vY = 0;
 if (abs(vX) < 0.1) vX = 0; 
@@ -237,6 +240,14 @@ if (onVine) {
     }
 
     exit; 
+}
+
+var _onIce = place_meeting(x, y + 1, oIce);
+
+if (_onIce && canMove) {
+    if (rightKey) vX += 0.2; 
+    if (leftKey)  vX -= 0.2;   
+    vX = clamp(vX, -8, 8); 
 }
 
 // Boss Door Logic
