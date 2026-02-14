@@ -92,6 +92,7 @@
     {"id":{"name":"ForestZone","path":"rooms/ForestZone/ForestZone.yy",},},
     {"id":{"name":"Menu","path":"rooms/Menu/Menu.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"DamageScript","path":"scripts/DamageScript/DamageScript.yy",},},
     {"id":{"name":"EnemyG","path":"scripts/EnemyG/EnemyG.yy",},},
     {"id":{"name":"Gravity","path":"scripts/Gravity/Gravity.yy",},},
     {"id":{"name":"HPScript","path":"scripts/HPScript/HPScript.yy",},},
