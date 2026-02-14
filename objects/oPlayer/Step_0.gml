@@ -255,6 +255,7 @@ if (_onIce && canMove) {
     vX = clamp(vX, -8, 8); 
 }
 
+
 // Boss Door Logic
 if dead {
     canMove = false;
