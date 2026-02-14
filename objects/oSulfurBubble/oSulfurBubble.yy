@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sSulfurina",
-    "path":"sprites/sSulfurina/sSulfurina.yy",
+    "name":"sSulfurBubble",
+    "path":"sprites/sSulfurBubble/sSulfurBubble.yy",
   },
   "spriteMaskId":null,
   "visible":true,
