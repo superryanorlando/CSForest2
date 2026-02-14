@@ -7,7 +7,7 @@ grav = 0.275;
 termVelocity = 6;
 onGround = true;
 
-maxHP = 5
+maxHP = 6
 hp = maxHP;
 
 dead = false;
