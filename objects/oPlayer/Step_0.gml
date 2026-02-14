@@ -180,25 +180,26 @@ if (ySpeed >= 0 && place_meeting(x, y+1, oWall)) {
 
 y += (ySpeed + vY); 
 
-// --- BOUNCE PAD LOGIC (FIXED FOR PARABOLA) ---
+
 var pad  = instance_place(x, y, oBouncePad);
 var vpad = instance_place(x, y, oBouncePadV);
 var hpad = instance_place(x, y, oBouncePadH);
+var hpadL = instance_place(x, y, oBouncePadHL);
 
 if (pad != noone) {
     vX = 15;
-    ySpeed = -10;         // Use ySpeed so gravity handles the arc
-    vY = 0;               // Reset external Y
-    isBouncing = true;    // Prevents Z-release from cutting the height
+    ySpeed = -10;        
+    vY = 0;           
+    isBouncing = true;   
     jumpHoldTime = 0;     
     zKeyReal = 0;          
     onGround = false;
     y -= 2;
 }
 if (vpad != noone) {
-    ySpeed = -10;         // Use ySpeed so gravity handles the arc
-    vY = 0;               // Reset external Y
-    isBouncing = true;    // Prevents Z-release from cutting the height
+    ySpeed = -10;         
+    vY = 0;               
+    isBouncing = true;    
     jumpHoldTime = 0;
     zKeyReal = 0;
     onGround = false;
@@ -206,6 +207,10 @@ if (vpad != noone) {
 }
 if (hpad != noone) {
     vX = 10;
+}
+
+if (hpadL != noone) {
+    vX = -10;
 }
 
 var vine = instance_place(x, y, oVine);
