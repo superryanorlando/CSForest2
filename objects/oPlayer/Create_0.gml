@@ -16,7 +16,7 @@ termVelocity = 6;
 jumpHoldTime = 0;
 vX = 0;
 vY = 0;
-vDecel = 0.05;
+vDecel = 0.03;
 onGround = true;
 isBouncing = false;
 

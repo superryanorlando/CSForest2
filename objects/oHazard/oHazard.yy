@@ -8,8 +8,8 @@
   "name":"oHazard",
   "overriddenProperties":[],
   "parent":{
-    "name":"objects",
-    "path":"folders/objects.yy",
+    "name":"ForestTiles",
+    "path":"folders/objects/ForestTiles.yy",
   },
   "parentObjectId":{
     "name":"oWall",
