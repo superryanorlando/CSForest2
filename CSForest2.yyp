@@ -24,7 +24,6 @@
     {"$GMFolder":"","%Name":"scripts","folderPath":"folders/scripts.yy","name":"scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"sprites","folderPath":"folders/sprites.yy","name":"sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"enemies","folderPath":"folders/sprites/enemies.yy","name":"enemies","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"karcz","folderPath":"folders/sprites/enemies/karcz.yy","name":"karcz","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"nick","folderPath":"folders/sprites/enemies/nick.yy","name":"nick","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"shazaib","folderPath":"folders/sprites/enemies/shazaib.yy","name":"shazaib","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"player","folderPath":"folders/sprites/player.yy","name":"player","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -41,7 +40,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.2.213",
+    "IDEVersion":"2024.14.3.217",
   },
   "name":"CSForest2",
   "resources":[
@@ -60,11 +59,7 @@
     {"id":{"name":"oFakeS","path":"objects/oFakeS/oFakeS.yy",},},
     {"id":{"name":"oHazard","path":"objects/oHazard/oHazard.yy",},},
     {"id":{"name":"oHealth","path":"objects/oHealth/oHealth.yy",},},
-<<<<<<< Updated upstream
     {"id":{"name":"oIce","path":"objects/oIce/oIce.yy",},},
-=======
-    {"id":{"name":"oKarcz","path":"objects/oKarcz/oKarcz.yy",},},
->>>>>>> Stashed changes
     {"id":{"name":"oNick","path":"objects/oNick/oNick.yy",},},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},
     {"id":{"name":"oPressbutton","path":"objects/oPressbutton/oPressbutton.yy",},},
@@ -114,15 +109,7 @@
     {"id":{"name":"sGoddardWalk","path":"sprites/sGoddardWalk/sGoddardWalk.yy",},},
     {"id":{"name":"shpbar","path":"sprites/shpbar/shpbar.yy",},},
     {"id":{"name":"shpbarold","path":"sprites/shpbarold/shpbarold.yy",},},
-<<<<<<< Updated upstream
     {"id":{"name":"sIce","path":"sprites/sIce/sIce.yy",},},
-=======
-    {"id":{"name":"sKarczAlert","path":"sprites/sKarczAlert/sKarczAlert.yy",},},
-    {"id":{"name":"sKarczAttacking","path":"sprites/sKarczAttacking/sKarczAttacking.yy",},},
-    {"id":{"name":"sKarczIdle0","path":"sprites/sKarczIdle0/sKarczIdle0.yy",},},
-    {"id":{"name":"sKarczIdle1","path":"sprites/sKarczIdle1/sKarczIdle1.yy",},},
-    {"id":{"name":"sKarczJab","path":"sprites/sKarczJab/sKarczJab.yy",},},
->>>>>>> Stashed changes
     {"id":{"name":"sNickIdle","path":"sprites/sNickIdle/sNickIdle.yy",},},
     {"id":{"name":"sNickThrow","path":"sprites/sNickThrow/sNickThrow.yy",},},
     {"id":{"name":"sPlayer","path":"sprites/sPlayer/sPlayer.yy",},},
