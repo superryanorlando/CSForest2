@@ -182,6 +182,7 @@ y += (ySpeed + vY);
 
 
 var pad  = instance_place(x, y, oBouncePad);
+var padS = instance_place(x, y, oBouncePadSuper);
 var vpad = instance_place(x, y, oBouncePadV);
 var hpad = instance_place(x, y, oBouncePadH);
 var hpadL = instance_place(x, y, oBouncePadHL);
@@ -196,6 +197,18 @@ if (pad != noone) {
     onGround = false;
     y -= 2;
 }
+
+if (padS != noone) {
+    vX = 25;
+    ySpeed = -25;        
+    vY = 0;           
+    isBouncing = true;   
+    jumpHoldTime = 0;     
+    zKeyReal = 0;          
+    onGround = false;
+    y -= 2;
+}
+
 if (vpad != noone) {
     ySpeed = -10;         
     vY = 0;               
