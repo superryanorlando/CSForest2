@@ -47,6 +47,7 @@
   },
   "name":"CSForest2",
   "resources":[
+    {"id":{"name":"Object50","path":"objects/Object50/Object50.yy",},},
     {"id":{"name":"oBoboProjectile","path":"objects/oBoboProjectile/oBoboProjectile.yy",},},
     {"id":{"name":"oBossDoor","path":"objects/oBossDoor/oBossDoor.yy",},},
     {"id":{"name":"oBouncePad","path":"objects/oBouncePad/oBouncePad.yy",},},
@@ -148,6 +149,7 @@
     {"id":{"name":"sLeeIdle","path":"sprites/sLeeIdle/sLeeIdle.yy",},},
     {"id":{"name":"sLeeRaise","path":"sprites/sLeeRaise/sLeeRaise.yy",},},
     {"id":{"name":"sLeeWarn","path":"sprites/sLeeWarn/sLeeWarn.yy",},},
+    {"id":{"name":"sLine","path":"sprites/sLine/sLine.yy",},},
     {"id":{"name":"sNickIdle","path":"sprites/sNickIdle/sNickIdle.yy",},},
     {"id":{"name":"sNickThrow","path":"sprites/sNickThrow/sNickThrow.yy",},},
     {"id":{"name":"sPlayer","path":"sprites/sPlayer/sPlayer.yy",},},
@@ -181,8 +183,8 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"Menu","path":"rooms/Menu/Menu.yy",},},
-    {"roomId":{"name":"ForestZone","path":"rooms/ForestZone/ForestZone.yy",},},
     {"roomId":{"name":"CaveZone","path":"rooms/CaveZone/CaveZone.yy",},},
+    {"roomId":{"name":"ForestZone","path":"rooms/ForestZone/ForestZone.yy",},},
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"bestlevelever","path":"rooms/bestlevelever/bestlevelever.yy",},},
   ],
