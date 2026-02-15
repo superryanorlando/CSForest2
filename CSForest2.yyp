@@ -24,9 +24,9 @@
     {"$GMFolder":"","%Name":"scripts","folderPath":"folders/scripts.yy","name":"scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"sprites","folderPath":"folders/sprites.yy","name":"sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"enemies","folderPath":"folders/sprites/enemies.yy","name":"enemies","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"lee","folderPath":"folders/sprites/enemies/lee.yy","name":"lee","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"karcz","folderPath":"folders/sprites/enemies/karcz.yy","name":"karcz","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"snowkarcz","folderPath":"folders/sprites/enemies/karcz/snowkarcz.yy","name":"snowkarcz","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"lee","folderPath":"folders/sprites/enemies/lee.yy","name":"lee","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"nick","folderPath":"folders/sprites/enemies/nick.yy","name":"nick","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"shazaib","folderPath":"folders/sprites/enemies/shazaib.yy","name":"shazaib","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"player","folderPath":"folders/sprites/player.yy","name":"player","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -43,7 +43,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.2.213",
+    "IDEVersion":"2024.14.3.217",
   },
   "name":"CSForest2",
   "resources":[
