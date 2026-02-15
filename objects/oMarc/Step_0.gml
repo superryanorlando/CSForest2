@@ -3,6 +3,7 @@ depth = -9000;
 
 // Die check
 if (y > room_height && !dead) dead = true;
+if (hp <= 0) dead = true; 
 if (dead) { instance_destroy(); exit; }
 
 // Flash Logic
