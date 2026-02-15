@@ -14,9 +14,6 @@ if (hp < hpPrev) {
     hpPrev = hp;    // Sync HP so we don't trigger the flash again until the next hit
 }
 
-if (Touching(oPlayer) && !oPlayer.invulnerable) {
-    HPScript(-8);
-}
 
 // --- TURNING LOGIC ---
 if (instance_exists(oPlayer) && !isAttacking) {

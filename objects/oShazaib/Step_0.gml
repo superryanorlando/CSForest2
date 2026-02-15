@@ -8,10 +8,7 @@ if (y>room_height && !dead) {
 if (Touching(oPlayer) && !oPlayer.invulnerable) {
 	if (state=="RUN"||state=="COOLDOWN") {
 		HPScript(-15);
-	} else {
-		HPScript(-10);
-	}
-    
+	} 
 }
 
 // --- DAMAGE FLASH LOGIC ---
