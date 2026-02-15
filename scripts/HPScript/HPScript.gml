@@ -7,7 +7,7 @@ function HPScript(num){
 	}
 	if (num<0) {
 		oPlayer.invulnerable = true;
-	
+		oPlayer.invulTimer = 120;
 		if (oPlayer.hp<=0) {
 			oPlayer.hp = 0;
 			oPlayer.dead = true;

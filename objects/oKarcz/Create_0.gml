@@ -9,6 +9,8 @@ onGround = true;
 maxHP = 5;
 hp = maxHP;
 dead = false;
+flashTimer = 0;
+hpPrev = hp;
 
 // --- STATE MACHINE ---
 state = "IDLE"; // States: IDLE, ALERT, ATTACK, COOLDOWN

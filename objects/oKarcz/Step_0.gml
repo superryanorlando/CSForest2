@@ -6,6 +6,11 @@ if (y > room_height && !dead) {
     dead = true;
 }
 
+if (hp < hpPrev) {
+    flashTimer = 2; // Flash for 2 frames
+    hpPrev = hp;    // Sync HP so we don't trigger the flash again until the next hit
+}
+
 // =========================================================
 // --- STATE MACHINE ---
 // =========================================================
@@ -54,7 +59,7 @@ switch (state) {
         if (facingDir == 1) { _rectX1 = x; _rectX2 = x + _boxWidth; }
         else { _rectX1 = x - _boxWidth; _rectX2 = x; }
         
-        var _rectY1 = y - 20; 
+        var _rectY1 = y - 35; 
         var _rectY2 = _rectY1 + 10;
 
         // HIT LOGIC
@@ -72,7 +77,7 @@ switch (state) {
                     // 2. APPLY KNOCKBACK
                     // We push the player in the direction Karcz is facing
                     // Increase '8' for a stronger push, '-4' for higher lift
-                    _inst.vX = facingDir * 1; 
+                    _inst.vX = facingDir * 2.5; 
                     _inst.vY = 0;            
                     
                     ds_list_add(hitList, _inst);
@@ -93,6 +98,15 @@ switch (state) {
 // =========================================================
 // --- PHYSICS & COLLISION (Provided Code) ---
 // =========================================================
+
+if (hp <= 0) {
+	dead = true; 
+}
+
+if (dead) {
+	instance_destroy();
+	exit;
+}
 
 // X Collision
 var _subpix = 0.5;

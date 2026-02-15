@@ -1,25 +1,12 @@
-draw_self(); // Draw the enemy sprite normally
 
-if (debugShowHitbox) {
-    draw_set_color(c_red);
-    draw_set_alpha(0.5);
+if (flashTimer > 0) {
+    gpu_set_fog(true, c_white, 0, 0);
+    draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+    gpu_set_fog(false, c_white, 0, 0);
     
-    var _rectX1, _rectX2;
-    var _boxWidth = 40;
-    
-    if (facingDir == 1) {
-        _rectX1 = x;
-        _rectX2 = x + _boxWidth;
-    } else {
-        _rectX1 = x - _boxWidth;
-        _rectX2 = x;
-    }
-    
-    var _rectY1 = y - 20; 
-    var _rectY2 = _rectY1 + 10;
-    
-    draw_rectangle(_rectX1, _rectY1, _rectX2, _rectY2, false);
-    
-    draw_set_alpha(1);
-    draw_set_color(c_white);
+    flashTimer--; // Countdown the flash
+} else {
+    // Normal draw
+    draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 }
+
