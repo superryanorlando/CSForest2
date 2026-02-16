@@ -32,6 +32,6 @@ switch(state) {
 // Damage logic (only during strike and hold)
 if (state == 1 || state == 2) {
     if (place_meeting(x, y, oPlayer)) {
-        if (!oPlayer.invulnerable) { with(oPlayer) HPScript(-1); }
+        if (!oPlayer.invulnerable) { with(oPlayer) HPScript(-8); }
     }
 }

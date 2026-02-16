@@ -223,12 +223,12 @@ switch (state) {
                     subState = 2;
                     burstTimer = burstDelay; // Set the delay
                 }
-                // BURST 3: Tracking Player (Wait 0.5s between each of the 3 vines)
+                // BURST 3: Tracking Player 
                 else if (subState >= 2 && subState < 5) {
                     instance_create_layer(oPlayer.x, groundY, "Instances", oSpikedVine);
                     instance_create_layer(oPlayer.x, groundY, "Instances", oWarnBox);
                     subState++;
-                    burstTimer = 15; // 0.5s delay for tracking vines
+                    burstTimer = 0; // 0.5s delay for tracking vines
                 }
                 else {
                     state = "JUMP_DOWN";
