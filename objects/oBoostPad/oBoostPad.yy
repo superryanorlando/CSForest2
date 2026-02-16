@@ -6,8 +6,8 @@
   "name":"oBoostPad",
   "overriddenProperties":[],
   "parent":{
-    "name":"objects",
-    "path":"folders/objects.yy",
+    "name":"City",
+    "path":"folders/objects/City.yy",
   },
   "parentObjectId":null,
   "persistent":false,

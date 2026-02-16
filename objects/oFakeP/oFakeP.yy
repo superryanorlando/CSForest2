@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"City",
-    "path":"folders/objects/CaveTiles/City.yy",
+    "path":"folders/objects/City.yy",
   },
   "parentObjectId":{
     "name":"oFake_2",

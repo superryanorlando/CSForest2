@@ -268,6 +268,19 @@ if (_onIce && canMove) {
     vX = clamp(vX, -8, 8); 
 }
 
+var Bpad = instance_place(x, y, oBoostPad);
+
+if (Bpad != noone) {
+    vX = 15;
+}
+
+var Bpad2= instance_place(x, y, oBoostPad2);
+
+if (Bpad2 != noone) {
+    vX = -15;
+}
+
+
 
 // Boss Door Logic
 if dead {
