@@ -228,7 +228,7 @@ switch (state) {
                     instance_create_layer(oPlayer.x, groundY, "Instances", oSpikedVine);
                     instance_create_layer(oPlayer.x, groundY, "Instances", oWarnBox);
                     subState++;
-                    burstTimer = 30; // 0.5s delay for tracking vines
+                    burstTimer = 15; // 0.5s delay for tracking vines
                 }
                 else {
                     state = "JUMP_DOWN";

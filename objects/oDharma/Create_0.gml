@@ -28,7 +28,7 @@ groundY = y;      // Remember where the floor is
 arenaLeft = 0;    // Will set this in Step based on Boss Door
 vineWidth = 32;   // Width of the vine sprite (adjust to match your sprite)
 burstTimer = 0;
-burstDelay = 45; // 0.75 seconds of rest between each vine burs
+burstDelay = 15; // 0.75 seconds of rest between each vine burs
 
 // --- ANIMATION/FACING ---
 // -1 = Facing Left (Default), 1 = Facing Right

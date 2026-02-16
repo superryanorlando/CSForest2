@@ -24,7 +24,7 @@
   ],
   "name":"sWarnBox",
   "nineSlice":null,
-  "origin":7,
+  "origin":9,
   "parent":{
     "name":"sprites",
     "path":"folders/sprites.yy",
@@ -80,7 +80,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":16,
-    "yorigin":32,
+    "yorigin":40,
   },
   "swatchColours":null,
   "swfPrecision":0.5,
