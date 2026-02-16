@@ -44,11 +44,10 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.2.213",
+    "IDEVersion":"2024.14.3.217",
   },
   "name":"CSForest2",
   "resources":[
-    {"id":{"name":"Object50","path":"objects/Object50/Object50.yy",},},
     {"id":{"name":"oBoboProjectile","path":"objects/oBoboProjectile/oBoboProjectile.yy",},},
     {"id":{"name":"oBossDoor","path":"objects/oBossDoor/oBossDoor.yy",},},
     {"id":{"name":"oBouncePad","path":"objects/oBouncePad/oBouncePad.yy",},},
@@ -74,6 +73,7 @@
     {"id":{"name":"oKarcz2","path":"objects/oKarcz2/oKarcz2.yy",},},
     {"id":{"name":"oLee","path":"objects/oLee/oLee.yy",},},
     {"id":{"name":"oLeeIceBullet","path":"objects/oLeeIceBullet/oLeeIceBullet.yy",},},
+    {"id":{"name":"oLine","path":"objects/oLine/oLine.yy",},},
     {"id":{"name":"oMarc","path":"objects/oMarc/oMarc.yy",},},
     {"id":{"name":"oNick","path":"objects/oNick/oNick.yy",},},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},
