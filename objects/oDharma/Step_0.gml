@@ -188,7 +188,7 @@ switch (state) {
         break;
 
     case "TOTEM_ATTACK_V":
-        if (sprite_index == sDharmaWarn) {
+        if (sprite_index == sDharmaTotemWarn) {
             attackTimer--;
             if (attackTimer <= 0) {
                 sprite_index = sDharmaTotemAttack;
@@ -206,9 +206,9 @@ switch (state) {
                 
                 // BURST 1: Spaced out more
                 if (subState == 0) {
-                    for (var i = arenaLeft; i < arenaLeft + 512; i += (vineWidth * 3)) {
-                        instance_create_layer(i, groundY, layer, oSpikedVine);
-                        instance_create_layer(i, groundY, layer, oWarnBox);
+                    for (var i = arenaLeft; i < arenaLeft + 512; i += (vineWidth * 2)) {
+                        instance_create_layer(i, groundY, "Instances", oSpikedVine);
+                        instance_create_layer(i, groundY, "Instances", oWarnBox);
                     }
                     subState = 1;
                     burstTimer = burstDelay; // Set the delay
@@ -216,17 +216,17 @@ switch (state) {
                 // BURST 2: Spaced out and offset
                 else if (subState == 1) {
                     var _offset = (vineWidth * 1.5); // Center the vines in the previous gaps
-                    for (var i = arenaLeft + _offset; i < arenaLeft + 512; i += (vineWidth * 3)) {
-                        instance_create_layer(i, groundY, layer, oSpikedVine);
-                        instance_create_layer(i, groundY, layer, oWarnBox);
+                    for (var i = arenaLeft + _offset; i < arenaLeft + 512; i += (vineWidth * 2)) {
+                        instance_create_layer(i, groundY, "Instances", oSpikedVine);
+                        instance_create_layer(i, groundY, "Instances", oWarnBox);
                     }
                     subState = 2;
                     burstTimer = burstDelay; // Set the delay
                 }
                 // BURST 3: Tracking Player (Wait 0.5s between each of the 3 vines)
                 else if (subState >= 2 && subState < 5) {
-                    instance_create_layer(oPlayer.x, groundY, layer, oSpikedVine);
-                    instance_create_layer(oPlayer.x, groundY, layer, oWarnBox);
+                    instance_create_layer(oPlayer.x, groundY, "Instances", oSpikedVine);
+                    instance_create_layer(oPlayer.x, groundY, "Instances", oWarnBox);
                     subState++;
                     burstTimer = 30; // 0.5s delay for tracking vines
                 }
