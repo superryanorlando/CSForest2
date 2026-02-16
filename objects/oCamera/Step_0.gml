@@ -11,24 +11,29 @@ var camY = oPlayer.y - camHeight/2;
 
 clamp(oPlayer.x, actualCamX-camWidth, actualCamX+camWidth)
 
-//thing
+
 if (instance_exists(oBossDoor)) {
     var door = instance_nearest(oPlayer.x, oPlayer.y, oBossDoor);
 
-    switch (door.state) {
-        case "closed":
-        case "opening":
-            camX = min(camX, door.x - camWidth);
-            break;
-        case "locking":
-        case "closing":
-        case "locked":
-            camX = max(camX, door.x - door.sprite_width);
-            break;
+    var yRange = 200;
+    var withinY = (oPlayer.y >= door.y - yRange) && (oPlayer.y <= door.y + yRange);
+
+    if (withinY) {
+        switch (door.state) {
+            case "closed":
+            case "opening":
+                camX = min(camX, door.x - camWidth);
+                break;
+
+            case "locking":
+            case "closing":
+            case "locked":
+                camX = max(camX, door.x - door.sprite_width);
+                break;
+        }
     }
 }
 
-//
 
 
 camX = clamp(camX, 0, room_width-camWidth);
