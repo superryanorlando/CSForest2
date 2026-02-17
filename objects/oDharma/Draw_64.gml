@@ -7,8 +7,8 @@ var total_w = maxHP * seg_w * scale;
 
 // Center Calculation
 // Screen Width is 256. Center is 128.
-var start_x = 50;
-var draw_y = 600; // 35px from bottom
+var start_x = 192;
+var draw_y = 632; // 35px from bottom
 
 // 1. Draw Background (Black/Empty)
 for (var i = 0; i < maxHP; i++) {

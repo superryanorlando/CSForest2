@@ -31,7 +31,7 @@
   ],
   "name":"sTotem",
   "nineSlice":null,
-  "origin":0,
+  "origin":1,
   "parent":{
     "name":"Forest",
     "path":"folders/sprites/tiles/Forest.yy",
@@ -107,7 +107,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":0,
+    "xorigin":12,
     "yorigin":0,
   },
   "swatchColours":null,

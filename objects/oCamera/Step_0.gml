@@ -36,6 +36,7 @@ if (instance_exists(oBossDoor)) {
 
 
 
+
 camX = clamp(camX, 0, room_width-camWidth);
 camY = clamp(camY, 0, room_height-camHeight);
 

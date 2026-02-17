@@ -22,7 +22,7 @@ attackTimer = 0;
 subState = 0;   // Used for multi-stage attacks (like the 3 vine bursts)
 
 // --- TOTEM / ARENA INFO ---
-totemX = x + 120; // Default, can be adjusted
+totemX = oDharmaTotem.x; // Default, can be adjusted
 totemY = y - 100;  
 groundY = y;      // Remember where the floor is
 arenaLeft = 0;    // Will set this in Step based on Boss Door

@@ -1,16 +1,20 @@
-//makes enemy almost front layer
+//basic
 depth = -9000;
 
 if (y>room_height && !dead) {
 	dead = true;
 }
-
-//
-
-//DIE
-
-//
-
+if (hp < hpPrev) {
+    flashTimer = 2; // Flash for 2 frames
+    hpPrev = hp;    // Sync HP so we don't trigger the flash again until the next hit
+}
+if (hp <= 0) {
+	dead = true; 
+}
+if (dead) {
+	instance_destroy();
+	exit;
+}
 
 //X
 var _subpix = 0.5;
@@ -50,5 +54,5 @@ x+=xSpeed;
 //Y
 
 //gravity
-//EnemyG(oEnemy);
+EnemyG(id);
 

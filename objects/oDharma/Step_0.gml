@@ -1,5 +1,5 @@
 // Depth
-depth = -9000;
+depth = 0;
 
 // Die check
 if (hp <= 0 && !dead) dead = true;
@@ -74,7 +74,11 @@ switch (state) {
 
 		if (collision_rectangle(_x1, _y1, _x2, _y2, oPlayer, false, true)) {
 		    if (!oPlayer.invulnerable && !oPlayer.dead) {
-		        with (oPlayer) HPScript(-8);
+		        with (oPlayer) {
+					HPScript(-8);
+					oPlayer.vX = oDharma.image_xscale * -8; 
+                    oPlayer.vY = 0;   
+				}
 		    }
 }
         
@@ -91,28 +95,42 @@ switch (state) {
         }
         break;
 
-    // 4. TOTEM: PRE-JUMP
+    // 4. TOTEM: PRE-JUMP (Dynamic Target Calculation)
     case "PRE_JUMP":
-        // Wait for animation end
         if (image_index >= image_number - 1) {
-            state = "JUMP_TO_TOTEM";
-            sprite_index = sDharmaJump;
+            // Find the actual totem object
+            var _target = instance_nearest(x, y, oDharmaTotem);
             
-            // Setup Parabola to Totem
-            startX = x;
-            jumpStartY = y;
-            var _jumpH = 120; // Height of arc
-            
-            // Math: v = sqrt(2 * g * h)
-            ySpeed = -sqrt(2 * grav * _jumpH);
-            var _time = abs(ySpeed / grav); // Time to peak
-            // Total time to land at y-80 is tricky, so let's aim for PEAK at totemX
-            // This simplifies math: He peaks exactly at the totem's X and Y
-            
-            // Adjust Totem Target Y slightly
-            targetX = totemX;
-            var _totalTime = _time * 2; // Rough estimate
-            xSpeed = (targetX - startX) / _totalTime;
+            if (_target != noone) {
+                state = "JUMP_TO_TOTEM";
+                sprite_index = sDharmaJump;
+                
+                // --- TARGET COORDINATES ---
+                // Origin is Top-Centre, so _target.x and _target.y is the landing spot
+                targetX = _target.x;
+                targetY = _target.y+5;
+                startX = x;
+                startY = y;
+
+                // --- THE MATH ---
+                // 1. Calculate vertical velocity for a specific arc height
+                var _peakHeight = 140; // Total height of the jump arc relative to ground
+                ySpeed = -sqrt(2 * grav * _peakHeight);
+                
+                // 2. Calculate how long it takes to reach the peak, then fall to targetY
+                var _timeToPeak = abs(ySpeed / grav);
+                var _distToFall = targetY - (startY - _peakHeight);
+                var _timeToFall = sqrt(abs(2 * _distToFall / grav));
+                
+                var _totalTime = _timeToPeak + _timeToFall;
+
+                // 3. Set horizontal speed to arrive exactly on time
+                xSpeed = (targetX - startX) / _totalTime;
+            } else {
+                // Failsafe if no totem is found
+                state = "COOLDOWN";
+                attackTimer = 60;
+            }
         }
         break;
 
@@ -122,15 +140,16 @@ switch (state) {
         ySpeed += grav;
         y += ySpeed;
         
-        // Land on Totem Logic
-        // If falling AND we hit the totem height
-        if (ySpeed > 0 && y >= totemY) {
-            y = totemY;
+        // Precise Landing Check: 
+        // If we are falling (ySpeed > 0) and have passed the target height
+        if (ySpeed > 0 && y >= targetY) {
+            y = targetY; // Snap to the top of the totem
+            x = targetX; // Snap to the center of the totem
             ySpeed = 0;
             xSpeed = 0;
             state = "ON_TOTEM";
             sprite_index = sDharmaTotem;
-            attackTimer = 30; // Brief pause before attacking
+            attackTimer = 30;
         }
         break;
 
@@ -171,16 +190,16 @@ switch (state) {
             attackTimer--;
             if (attackTimer <= 0) {
                 // Fire Shot
-                var _p = instance_create_layer(x, y - 20, "Instances", oDharmaProjectile);
+                var _p = instance_create_layer(x, y - 40, "Instances", oDharmaProjectile);
                 if (instance_exists(oPlayer)) {
-                    _p.direction = point_direction(x, y - 20, oPlayer.x, oPlayer.y);
+                    _p.direction = point_direction(x, y - 40, oPlayer.x, oPlayer.y);
                     _p.image_angle = _p.direction;
                 }
                 
                 subState++; // Count shots
                 attackTimer = 15; // Reset shot timer
                 
-                if (subState >= 3) {
+                if (subState >= 4) {
                     state = "JUMP_DOWN"; // Done shooting
                 }
             }
