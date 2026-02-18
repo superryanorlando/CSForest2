@@ -2,26 +2,38 @@
 depth = -10000;
 
 //stun
+if (flashTimer > 0) {
+    flashTimer--;
+    // Make the player flicker to show they are invincible
+    image_alpha = (flashTimer % 4 < 2) ? 0.2 : 1.0; 
+} else {
+    // Only reset alpha if not currently stunned
+    if (!stunned) image_alpha = 1.0;
+}
+
+// --- 2. STUN LOGIC ---
 if (stunned) {
-    canMove = false;
-    image_alpha = 0.75;
-	if ((current_time div 100) mod 2 == 0) {
-        x+=0.2; 
-    } else {
-        x-=0.2; 
-    }
-    xSpeed = 0; 
-    // If you have a ySpeed for gravity, let it stay so they can fall while stunned
+    xSpeed = 0; // Freeze horizontal movement
     
     stunTimer--;
     if (stunTimer <= 0) {
         stunned = false;
-        canMove = true;
+        canMove = true; // Set your movement flag back to true
         image_alpha = 1.0;
     }
-    
-    // IMPORTANT: Skip the rest of the movement code while stunned
     exit; 
+}
+
+
+// --- HOP RECOVERY TIMER ---
+if (hopRecoveryTimer > 0) {
+    hopRecoveryTimer--;
+    canMove = false; // Keep movement locked
+    
+    // Once timer hits 0, restore movement
+    if (hopRecoveryTimer <= 0) {
+        canMove = true;
+    }
 }
 
 //Inputs
@@ -36,7 +48,50 @@ vY = lerp(vY, 0, vDecel);
 if (abs(vY) < 0.1) vY = 0;
 if (abs(vX) < 0.1) vX = 0; 
 
-// --- MELEE ATTACK SYSTEM ---
+// 1. QUICK HOP (Shift + Arrow)
+// Must be on ground, not attacking, not already hopping/stunned, and holding a direction
+if (shiftKey && (rightKey || leftKey) && onGround && !isAttacking && !stunned && !isHopping && hopRecoveryTimer <= 0) {
+    var _hopDir = 0;
+    if (rightKey) _hopDir = 1;
+    if (leftKey) _hopDir = -1;
+    
+    // Hop Physics
+    // We use vX (external velocity) so friction slows us down naturally after the burst
+    vX = _hopDir * 4.0;   // High horizontal burst
+    ySpeed = -2.5;        // Low vertical hop
+    
+    isHopping = true;
+    onGround = false;     // Detach from ground immediately
+    
+    // Set Sprite
+    sprite_index = sGoddardFall;
+    // IMPORTANT: We do not change image_xscale here, so he hops backwards if facing wrong way
+}
+
+// Reset Hopping state when we land
+if (onGround) {
+    isHopping = false;
+}
+
+// 2. ORB PUNCH TRIGGER (C Key)
+if (cKeyPressed && !isAttacking && !stunned && orbCooldown <= 0) {
+    isAttacking = true;
+    canMove = false;
+    isHopping = false; 
+    
+    sprite_index = sGoddardOrbPunch;
+    image_index = 0;
+    image_speed = 1; 
+    
+    hasSpawnedOrb = false; // Reset this flag at the START of the punch
+    orbCooldown = 45;      // Set the cooldown immediately
+}
+
+// Tick down the cooldown every frame
+if (orbCooldown > 0) orbCooldown--;
+
+
+// --- MELEE ATTACK SYSTEM (X) ---
 
 // 1. COMBO RESET LOGIC
 if (!isAttacking) {
@@ -72,16 +127,39 @@ if (xKeyPressed && onGround && !isAttacking) {
 // 3. ACTIVE ATTACK BEHAVIOR
 if (isAttacking) {
     canMove = false; 
-    attackTimer--;
+    // CHECK: Is this the Orb Punch?
+    if (sprite_index == sGoddardOrbPunch) {
+        canMove = false;
 
-    // --- END ATTACK ---
-    if (attackTimer <= 0) {
+    // 1. SPAWN THE ORB (on the 2nd frame)
+    // We check the boolean 'hasSpawnedOrb' so it only happens ONCE per animation
+    if (image_index >= 1 && !hasSpawnedOrb) { 
+         var _orb = instance_create_layer(x-image_xscale*10, y-20, "Instances", oBlueOrb);
+         _orb.facing = -image_xscale;
+         
+         hasSpawnedOrb = true; // This flag stays TRUE until the animation is totally done
+    }
+
+    // 2. WAIT FOR ANIMATION TO FINISH
+    if (image_index + image_speed >= image_number) {
         isAttacking = false;
         canMove = true;
-        comboResetTimer = 10;
-        sprite_index = sGoddardIdle; 
+        sprite_index = sGoddardIdle;
+        // Note: we don't reset hasSpawnedOrb here; we reset it at the start of the next press
+    }
+    } 
+    // ELSE: It is a standard Melee attack
+    else {
+        attackTimer--;
+        if (attackTimer <= 0) {
+            isAttacking = false;
+            canMove = true;
+            comboResetTimer = 10;
+            sprite_index = sGoddardIdle; 
+        }
     }
 }
+
 
 // Combine normal movement with external velocity
 var _totalX = xSpeed + vX;
@@ -97,9 +175,10 @@ if (y-sprite_height>room_height && !dead) {
 // MOVEMENT INPUTS
 if (canMove) {
     if (rightKey) {
-        image_xscale = -1;
+        // Only turn if NOT hopping
+        if (!isHopping) image_xscale = -1; 
     } else if (leftKey) {
-        image_xscale = 1;
+        if (!isHopping) image_xscale = 1;
     }
 }
 if (!canMove&&stunned) {
@@ -206,6 +285,16 @@ _totalY = ySpeed + vY;
 Gravity(oPlayer); 
 
 if (ySpeed >= 0 && place_meeting(x, y+1, oWall)) {
+	if (isHopping) {
+        isHopping = false;
+        canMove = false;
+        vX = 0;      // Kill external horizontal momentum
+        xSpeed = 0;  // Kill internal horizontal speed
+        
+        // 0.15 seconds is approx 9 frames at 60FPS
+        // Use game_get_speed(gamespeed_fps) * 0.15 for accuracy across different monitors
+        hopRecoveryTimer = game_get_speed(gamespeed_fps) * 0.25; 
+    }
     onGround = true;
     vY = 0; 
 } else {

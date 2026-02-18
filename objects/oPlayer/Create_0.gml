@@ -19,7 +19,12 @@ vX = 0;
 vY = 0;
 vDecel = 0.03;
 onGround = true;
+
 isBouncing = false;
+isHopping = false;
+hopRecoveryTimer = 0;
+orbCooldown = 0;      // Controls the 30-frame delay
+hasSpawnedOrb = false; // Persistent flag to prevent multi-spawns
 
 
 // hp
@@ -30,6 +35,8 @@ invulnerable = false;
 dead = false;
 onVine = false;
 vineSpeed = 2.0; 
+flashTimer = 0;
+stunTimer = 0;     // Countdown for the freeze
 
 
 	// 1 px between each bar. i love you rockman

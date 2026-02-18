@@ -69,37 +69,38 @@ switch (state) {
         break;
 
     case "JUMP":
-        ySpeed += grav; 
+       ySpeed += grav; 
         jumpTimer--;
 
-        // --- NEW: CRUSH PLAYER LOGIC ---
-        // If falling, check if we're about to land on the player
+        // --- CRUSH PLAYER LOGIC (FIXED) ---
         if (ySpeed > 0) {
             var _hitPlayer = instance_place(x, y + ySpeed, oPlayer);
-            if (_hitPlayer != noone && !_hitPlayer.stunned) {
-                // Deal damage or knockback
+            
+            // ONLY deal damage if the player isn't already in iFrames (flashTimer)
+            if (_hitPlayer != noone && _hitPlayer.flashTimer <= 0) {
                 with (_hitPlayer) {
-                    // Replace '1' with your damage amount
                     hp -= 10; 
+                    flashTimer = 45; // Give them 0.75s of invincibility
+                    
+                    
                 }
             }
         }
 
-        // --- LANDING DETECTION ---
+        // --- LANDING DETECTION (WITH CAMERA SHAKE FIX) ---
         if (jumpTimer <= 0 && ySpeed > 0 && place_meeting(x, y + ySpeed, oWall)) {
-            
-            // 1. STUCK FIX: Precise "Pixel Snap" to the floor
+            // SNAP TO FLOOR
             while (!place_meeting(x, y + sign(ySpeed), oWall)) {
                 y += sign(ySpeed);
             }
             
-            // 2. TRIGGER CAMERA SHAKE
+            // CAMERA SHAKE
             if (instance_exists(oCamera)) {
-                oCamera.shakeMag = 5; 
+                oCamera.shakeMag = 25; 
             }
             
-            // 3. STUN PLAYER
-            if (instance_exists(_target) && _target.onGround) {
+            // STUN PLAYER
+            if (instance_exists(_target) && _target.onGround && !_target.stunned) {
                 with (_target) {
                     stunned = true; 
                     stunTimer = 45; 
@@ -107,7 +108,6 @@ switch (state) {
                 }
             }
             
-            // Reset vertical momentum and switch state
             ySpeed = 0;
             xSpeed = 0;
             state = "RECOVER";
@@ -128,7 +128,7 @@ switch (state) {
         var _dist = slideTargetX - x;
         xSpeed = lerp(xSpeed, sign(_dist) * 12, 0.1);
 		if (Touching(oPlayer) && !oPlayer.invulnerable) {
-				HPScript(-10);
+				HPScript(-6);
 			}
         if (abs(_dist) < 32 || place_meeting(x + xSpeed, y, oWall)) {
             state = "RECOVER";
