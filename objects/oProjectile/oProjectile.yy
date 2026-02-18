@@ -9,8 +9,8 @@
   "name":"oProjectile",
   "overriddenProperties":[],
   "parent":{
-    "name":"objects",
-    "path":"folders/objects.yy",
+    "name":"projectiles",
+    "path":"folders/objects/projectiles.yy",
   },
   "parentObjectId":null,
   "persistent":false,

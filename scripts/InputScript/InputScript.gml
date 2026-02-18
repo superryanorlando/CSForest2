@@ -13,10 +13,12 @@ function playerInputs(){
 	upKey = keyboard_check(vk_up)
 	downKey = keyboard_check(vk_down)
 	shiftKey = keyboard_check(vk_shift);
+	
 	//action buttons
 	zKey = keyboard_check(ord("Z"))
 	xKey = keyboard_check(ord("X"))
 	cKey = keyboard_check(ord("C"))
+	dKey = keyboard_check(ord("D")); // Used for holding the charge
 	
 	zKeyPressed = keyboard_check_pressed(ord("Z"))
 	xKeyPressed = keyboard_check_pressed(ord("X"))
@@ -41,7 +43,7 @@ function playerInputs(){
 	cKeyPressed = keyboard_check_pressed(ord("C"))
 
 	//movement
-	if (oPlayer.canMove && !oPlayer.isAttacking) { // Double check here!
+	if (oPlayer.canMove && !oPlayer.isAttacking && !oPlayer.isCharging) {
     movDirection = rightKey - leftKey;
     xSpeed = movDirection * movSpeed;
 	} else {
