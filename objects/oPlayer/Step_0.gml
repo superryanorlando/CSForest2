@@ -1,6 +1,29 @@
 //makes player front layer
 depth = -10000;
 
+//stun
+if (stunned) {
+    canMove = false;
+    image_alpha = 0.75;
+	if ((current_time div 100) mod 2 == 0) {
+        x+=0.2; 
+    } else {
+        x-=0.2; 
+    }
+    xSpeed = 0; 
+    // If you have a ySpeed for gravity, let it stay so they can fall while stunned
+    
+    stunTimer--;
+    if (stunTimer <= 0) {
+        stunned = false;
+        canMove = true;
+        image_alpha = 1.0;
+    }
+    
+    // IMPORTANT: Skip the rest of the movement code while stunned
+    exit; 
+}
+
 //Inputs
 playerInputs();
 
@@ -77,6 +100,17 @@ if (canMove) {
         image_xscale = -1;
     } else if (leftKey) {
         image_xscale = 1;
+    }
+}
+if (!canMove&&stunned) {
+    xSpeed = 0; // Freeze horizontal movement
+    // Countdown the stun
+    if (variable_instance_exists(id, "stunTimer")) {
+        stunTimer--;
+        if (stunTimer <= 0) {
+            canMove = true;
+            image_alpha = 1.0;
+        }
     }
 }
 

@@ -29,6 +29,7 @@ if (instance_exists(oBossDoor)) {
             case "closing":
             case "locked":
                 camX = max(camX, door.x - door.sprite_width);
+				camY -= 40;
                 break;
         }
     }
@@ -43,5 +44,17 @@ camY = clamp(camY, 0, room_height-camHeight);
 actualCamX += (camX-actualCamX)*camFollowSpeed;
 actualCamY += (camY-actualCamY)*camFollowSpeed;
 
-camera_set_view_pos(view_camera[0], actualCamX, actualCamY);
+// --- NEW SHAKE LOGIC ---
+var _xShake = 0;
+var _yShake = 0;
+
+if (shakeMag > 0) {
+    _xShake = random_range(-shakeMag, shakeMag);
+    _yShake = random_range(-shakeMag, shakeMag);
+    shakeMag = lerp(shakeMag, 0, shakeFade); // Fade out
+    if (shakeMag < 0.5) shakeMag = 0;
+}
+
+camera_set_view_pos(view_camera[0], actualCamX + _xShake, actualCamY + _yShake);
+
 

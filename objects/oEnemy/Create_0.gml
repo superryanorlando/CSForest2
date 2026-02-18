@@ -9,5 +9,7 @@ onGround = true;
 
 maxHP = 5
 hp = maxHP;
+flashTimer = 0;
+hpPrev = hp;
 
 dead = false;

@@ -11,6 +11,12 @@ if (hp <= 0 && state != "DEATH") {
     image_index = 0;
 }
 
+if (oPlayer.x > x) {
+        image_xscale = -1; // Right
+    } else {
+        image_xscale = 1;  // Left
+    }
+
 // --- 1. TIMERS (Always at the top, outside the switch) ---
 if (invulnTimer > 0) invulnTimer--;
 if (flashTimer > 0) flashTimer--;

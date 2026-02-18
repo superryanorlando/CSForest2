@@ -23,4 +23,3 @@ cooldownTime = 120; // 2 seconds
 
 // --- HITBOX LOGIC ---
 hitList = ds_list_create(); // To store entities hit
-debugShowHitbox = false;    // Toggles the red box drawing

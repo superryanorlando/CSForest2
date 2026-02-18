@@ -6,6 +6,7 @@ movSpeed = 2;
 xSpeed = 0;
 ySpeed = 0;
 canMove = true;
+stunned = false;
 sprite_index = sGoddardIdle;
 image_speed = 0;
 

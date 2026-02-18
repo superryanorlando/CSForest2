@@ -28,8 +28,7 @@ if (invulnerable) {
         image_alpha = 1.0; 
     }
 } else {
-
-    image_alpha = 1.0;
+	if (!stunned) { image_alpha = 1.0;}
 }
 
 
