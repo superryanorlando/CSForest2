@@ -58,7 +58,7 @@ if (shiftKey && (rightKey || leftKey) && onGround && !isAttacking && !stunned &&
     
     // Hop Physics
     // We use vX (external velocity) so friction slows us down naturally after the burst
-    vX = _hopDir * 4.0;   // High horizontal burst
+    vX = _hopDir * 12;   // High horizontal burst
     ySpeed = -2.5;        // Low vertical hop
     
     isHopping = true;
@@ -85,7 +85,7 @@ if (cKeyPressed && !isAttacking && !stunned && orbCooldown <= 0) {
     image_speed = 1; 
     
     hasSpawnedOrb = false; // Reset this flag at the START of the punch
-    orbCooldown = 45;      // Set the cooldown immediately
+    orbCooldown = 60;      // Set the cooldown immediately
 }
 
 // Tick down the cooldown every frame

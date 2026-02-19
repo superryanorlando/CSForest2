@@ -5,7 +5,10 @@ if (state != "DEATH") {
 	y += 0.5*sin(0.1*x);
 } else {
     // Slow descent on death
-    y += 1;
+	sprite_index = sMrSenIdle;
+	x+=0.1;
+    y += 0.5;
+	image_blend = c_gray;
     if (y > room_height + 100) instance_destroy();
 }
 
@@ -55,11 +58,29 @@ switch(state) {
         break;
 
     case "LASER_CHARGE": // 90 Frames (VULNERABLE STATE)
-        timer++;
+		 timer++;
         sprite_index = sMrSenCharge;
         
-        // DAMAGE CHECK GOES HERE
-        if (place_meeting(x, y, oBlueOrb)) { hp--; }
+        // --- DAMAGE LOGIC: Only takes damage from oBlueOrb ---
+        // Define the hitbox boundaries based on your offsets
+        var _x1 = x + hitboxX;
+        var _y1 = y + hitboxY;
+        var _x2 = _x1 + 50;
+        var _y2 = _y1 + 30;
+        
+        // Look for the orb within the rectangle
+        var _inst = collision_rectangle(_x1, _y1, _x2, _y2, oBlueOrb, false, true);
+        
+        if (_inst != noone) {
+            hp -= 1;             // Take 1 damage
+            flashTimer = 5;      // Flash white to show hit
+            
+            // Destroy the orb so it doesn't hit multiple times in one frame
+            with (_inst) instance_destroy(); 
+            
+            // Optional: Add a small screen shake on hit
+            if (instance_exists(oCamera)) oCamera.shakeMag = 5;
+        }
         
         if (timer >= 90) {
             timer = 0;
@@ -91,8 +112,8 @@ switch(state) {
     case "DEATH":
         // Generate explosions randomly over his body
         if (irandom(3) == 0) { // Every few frames
-            var _exX = x + random_range(-40, 40);
-            var _exY = y + random_range(-60, 20);
+            var _exX = x + random_range(-60, 60);
+            var _exY = y + random_range(-60, 60);
             instance_create_layer(_exX, _exY, "Instances", oExplosion);
         }
         break;

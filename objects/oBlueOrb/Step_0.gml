@@ -4,8 +4,6 @@ age++;
 // Straight line movement
 x += moveSpeed * facing;
 
-// (Optional: If you want the sine wave movement instead, uncomment below)
-// y = ystart + -1 * sin(age * 0.1) * 2; 
 
 // --- LIFECYCLE ---
 
@@ -24,12 +22,22 @@ if (age >= maxAge) {
     instance_destroy();
 }
 
-// --- COLLISION (Placeholder) ---
-// Since this is a player attack, checking for oPlayer collision 
-// usually hurts the player. Assuming this hurts ENEMIES:
-
+// --- COLLISION LOGIC ---
 var _enemy = instance_place(x, y, oEnemy);
+
 if (_enemy != noone) {
-    _enemy.hp -= 1;
-    instance_destroy();
+    // Check if the thing we hit is actually the boss
+    if (_enemy.object_index == oMrSen || object_is_ancestor(_enemy.object_index, oMrSen)) {
+        // It's the boss! 
+        // We do NOTHING here. The boss's own code handles taking damage 
+        // from the oBlueOrb only during his vulnerable state.
+        
+        // However, we destroy the orb so it doesn't pass through him
+        instance_destroy();
+    } 
+    else {
+        // It's a regular enemy
+        _enemy.hp -= 1;
+        instance_destroy();
+    }
 }

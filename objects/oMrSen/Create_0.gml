@@ -1,5 +1,5 @@
 // --- CORE STATS ---
-maxHP = 50;
+maxHP = 33;
 hp = maxHP;
 state = "IDLE";
 timer = 0;
@@ -12,7 +12,7 @@ image_xscale = -1;
 // --- TOGGLEABLE OFFSETS ---
 orbX = 32;   orbY = -10;
 laserX = 40; laserY = 0;
-hitboxX = 0; hitboxY = -20; // Hitbox offset relative to x/y
+hitboxX = 0; hitboxY = -30; // Hitbox offset relative to x/y
 
 // --- DEBUG ---
-showDebugHitbox = true;
+showDebugHitbox = false;

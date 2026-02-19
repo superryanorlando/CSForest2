@@ -1,6 +1,6 @@
 if (!falling && instance_exists(oMrSen)) {
     // If MrSen's center is within 40 pixels of this block's center
-    if (abs(x - oMrSen.x) < 50) {
+    if (abs(x - oMrSen.x) < 64) {
         falling = true;
     }
 }
