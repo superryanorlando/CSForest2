@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sLabBG",
-    "path":"sprites/sLabBG/sLabBG.yy",
+    "name":"sCaveBG_1",
+    "path":"sprites/sCaveBG_1/sCaveBG_1.yy",
   },
   "spriteMaskId":null,
   "visible":true,
