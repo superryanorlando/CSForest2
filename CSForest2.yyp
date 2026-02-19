@@ -24,6 +24,7 @@
     {"$GMFolder":"","%Name":"projectiles","folderPath":"folders/objects/projectiles.yy","name":"projectiles","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"titlestuffs","folderPath":"folders/objects/titlestuffs.yy","name":"titlestuffs","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"rooms","folderPath":"folders/rooms.yy","name":"rooms","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"special","folderPath":"folders/rooms/special.yy","name":"special","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"scripts","folderPath":"folders/scripts.yy","name":"scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"sprites","folderPath":"folders/sprites.yy","name":"sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"bosses","folderPath":"folders/sprites/bosses.yy","name":"bosses","resourceType":"GMFolder","resourceVersion":"2.0",},
