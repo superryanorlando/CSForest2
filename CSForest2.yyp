@@ -69,6 +69,7 @@
   },
   "name":"CSForest2",
   "resources":[
+    {"id":{"name":"musicManager","path":"objects/musicManager/musicManager.yy",},},
     {"id":{"name":"oBigTommy","path":"objects/oBigTommy/oBigTommy.yy",},},
     {"id":{"name":"oBlueOrb","path":"objects/oBlueOrb/oBlueOrb.yy",},},
     {"id":{"name":"oBoboProjectile","path":"objects/oBoboProjectile/oBoboProjectile.yy",},},
