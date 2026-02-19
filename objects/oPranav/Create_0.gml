@@ -16,7 +16,7 @@ dead = false;
 
 state = "IDLE";
 aggroDist = 110;
-cooldownMax = 30; // 30 frame delay after swinging
+cooldownMax = 70; // 30 frame delay after swinging
 canTurn = true;
 hasShot = false; // Prevents multiple paintballs on one frame
 // --- ADJUSTABLE SPAWN POINT ---

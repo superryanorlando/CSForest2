@@ -1,4 +1,4 @@
 if Touching(oPlayer){
-	HPScript(2);
+	HPScript(50);
 	instance_destroy();
 }

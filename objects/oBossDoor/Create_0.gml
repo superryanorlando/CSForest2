@@ -1,4 +1,4 @@
-depth=1;
+depth=-15000;
 
 state = "closed"; // closed, opening, open, locking, closing
 open_speed = 2;
