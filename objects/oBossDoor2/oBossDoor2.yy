@@ -13,7 +13,10 @@
     "name":"objects",
     "path":"folders/objects.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"oWall",
+    "path":"objects/oWall/oWall.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

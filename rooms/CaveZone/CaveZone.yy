@@ -896,6 +896,7 @@
     {"name":"inst_5E63BCBB","path":"rooms/CaveZone/CaveZone.yy",},
     {"name":"inst_1BA255DE","path":"rooms/CaveZone/CaveZone.yy",},
     {"name":"inst_43A04B20","path":"rooms/CaveZone/CaveZone.yy",},
+    {"name":"inst_48F0127D","path":"rooms/CaveZone/CaveZone.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -1788,7 +1789,8 @@
         {"$GMRInstance":"v4","%Name":"inst_55E1BDBA","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_55E1BDBA","objectId":{"name":"oHibs","path":"objects/oHibs/oHibs.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":9792.0,"y":1296.0,},
         {"$GMRInstance":"v4","%Name":"inst_7B6793C1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7B6793C1","objectId":{"name":"oCarSuspender","path":"objects/oCarSuspender/oCarSuspender.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":9792.0,"y":1296.0,},
         {"$GMRInstance":"v4","%Name":"inst_5E63BCBB","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_5E63BCBB","objectId":{"name":"oHats","path":"objects/oHats/oHats.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":9936.0,"y":1488.0,},
-        {"$GMRInstance":"v4","%Name":"inst_1BA255DE","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1BA255DE","objectId":{"name":"oWallS","path":"objects/oWallS/oWallS.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":32.0,"x":9960.0,"y":1232.0,},
+        {"$GMRInstance":"v4","%Name":"inst_1BA255DE","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1BA255DE","objectId":{"name":"oWallS","path":"objects/oWallS/oWallS.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":2.0,"scaleY":134.0,"x":9960.0,"y":352.0,},
+        {"$GMRInstance":"v4","%Name":"inst_48F0127D","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_48F0127D","objectId":{"name":"oBossDoor2","path":"objects/oBossDoor2/oBossDoor2.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":9976.0,"y":1488.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"bgobjs","depth":100,"effectEnabled":true,"effectType":null,"gridX":8,"gridY":8,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_43A04B20","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_43A04B20","objectId":{"name":"oFakeC_3","path":"objects/oFakeC_3/oFakeC_3.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":388.0,"scaleY":283.0,"x":56.0,"y":432.0,},
@@ -1814,7 +1816,7 @@
     "Height":3000,
     "inheritRoomSettings":false,
     "persistent":false,
-    "Width":9960,
+    "Width":11000,
   },
   "sequenceId":null,
   "views":[

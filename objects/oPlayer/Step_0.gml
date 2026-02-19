@@ -426,3 +426,21 @@ if dead {
         }
     } 
 }
+
+if (x > room_width && instance_exists(oCamera)) {
+    if (room_exists(room_next(room))) {
+        room_goto_next();
+		audio_stop_all();
+    }
+} else {
+	// If oCamera doesn't exist, we assume oCameraAuto is running (Auto-scroller mode)
+    if (!instance_exists(oCamera)) {
+        var _camX = camera_get_view_x(view_camera[0]);
+        var _camW = camera_get_view_width(view_camera[0]);
+     
+        // Clamp the player between the left and right edges of the CAMERA view
+        // 16px buffer ensures the player's sprite doesn't clip halfway off-screen
+        x = clamp(x, _camX + 16, _camX + _camW - 16);
+
+}
+}
