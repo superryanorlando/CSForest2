@@ -1,0 +1,1 @@
+currentMusic = noone;
