@@ -12,8 +12,8 @@
     "path":"folders/objects/City.yy",
   },
   "parentObjectId":{
-    "name":"oFake_2",
-    "path":"objects/oFake_2/oFake_2.yy",
+    "name":"oFake_1",
+    "path":"objects/oFake_1/oFake_1.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
