@@ -43,7 +43,7 @@ function playerInputs(){
 	cKeyPressed = keyboard_check_pressed(ord("C"))
 
 	//movement
-	if (oPlayer.canMove && !oPlayer.isAttacking && !oPlayer.isCharging) {
+	if (oPlayer.canMove && !oPlayer.isAttacking) {
     movDirection = rightKey - leftKey;
     xSpeed = movDirection * movSpeed;
 	} else {

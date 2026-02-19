@@ -13,20 +13,17 @@ if (flashTimer > 0) {
 
 // --- 2. STUN LOGIC ---
 if (stunned) {
-    xSpeed = 0; 
-    
-    // NEW: If we get stunned, cancel any active charge
-    isCharging = false;
-    chargeTimer = 0;
+    xSpeed = 0; // Freeze horizontal movement
     
     stunTimer--;
     if (stunTimer <= 0) {
         stunned = false;
-        canMove = true; 
+        canMove = true; // Set your movement flag back to true
         image_alpha = 1.0;
     }
     exit; 
 }
+
 
 
 // --- HOP RECOVERY TIMER ---
@@ -94,48 +91,6 @@ if (cKeyPressed && !isAttacking && !stunned && orbCooldown <= 0) {
 // Tick down the cooldown every frame
 if (orbCooldown > 0) orbCooldown--;
 
-// 3. CHARGE ATTACK (D Key)
-
-// TRIGGER & HOLDING CHARGE
-if (dKey && onGround && !isAttacking && !stunned && !isHopping && hopRecoveryTimer <= 0) {
-    isCharging = true;
-    canMove = false;
-    chargeTimer++; // Count up frames (60 frames = 1 second)
-
-    // Determine Level and Sprite based on time held
-    // 0.5 seconds = 30 frames
-    if (chargeTimer < 30) {
-        chargeLevel = 1;
-        sprite_index = sGoddardCharge1;
-    } else if (chargeTimer < 60) {
-        chargeLevel = 2;
-        sprite_index = sGoddardCharge2;
-    } else {
-        chargeLevel = 3;
-        sprite_index = sGoddardCharge3;
-    }
-}
-// RELEASING CHARGE (Execute Attack)
-else if (isCharging) {
-    // If we were charging but D is no longer held (or we left ground/got stunned), release!
-    isCharging = false;
-    isAttacking = true;
-    canMove = false;
-    
-    // Reset flags for the upcoming attack animation
-    image_index = 0;
-    image_speed = 1;
-    hasSpawnedHitbox = false;
-    
-    // Select Attack Sprite based on the level reached
-    if (chargeLevel == 1) sprite_index = sGoddardBigPunch1;
-    else if (chargeLevel == 2) sprite_index = sGoddardBigPunch2;
-    else sprite_index = sGoddardBigPunch3;
-    
-    // Reset timer for next time
-    chargeTimer = 0;
-}
-
 
 // --- MELEE ATTACK SYSTEM (X) ---
 
@@ -193,37 +148,6 @@ if (isAttacking) {
         sprite_index = sGoddardIdle;
         // Note: we don't reset hasSpawnedOrb here; we reset it at the start of the next press
     }
-	// --- CASE B: CHARGE PUNCH (D) ---
-    else if (sprite_index == sGoddardBigPunch1 || sprite_index == sGoddardBigPunch2 || sprite_index == sGoddardBigPunch3) {
-        
-        // 1. GENERATE HITBOX (On Frame 2)
-        if (image_index >= 1 && !hasSpawnedHitbox) {
-            hasSpawnedHitbox = true;
-            
-            // Create Hitbox (Reusing existing hitbox logic concepts)
-            // Adjust "oHitbox" to whatever your actual hitbox object name is
-            var _hitbox = instance_create_layer(x + (20 * -image_xscale), y, "Instances", oHitbox); 
-            
-            _hitbox.creator = id;
-            _hitbox.image_xscale = -image_xscale; // Face the right way
-            
-            // Set Damage based on Charge Level
-            // We can derive level from the sprite being played
-            if (sprite_index == sGoddardBigPunch1) _hitbox.damage = 1;
-            else if (sprite_index == sGoddardBigPunch2) _hitbox.damage = 2;
-            else _hitbox.damage = 8;
-            
-            // Destroy hitbox quickly (1 frame duration usually)
-            // If your oHitbox doesn't destroy itself, uncomment the line below:
-            // _hitbox.alarm[0] = 1; 
-			// 2. END ANIMATION
-	        if (image_index + image_speed >= image_number) {
-	            isAttacking = false;
-	            canMove = true;
-	            sprite_index = sGoddardIdle;
-	        }
-	    }
-        }
     } 
     // ELSE: It is a standard Melee attack
     else {

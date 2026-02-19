@@ -50,8 +50,3 @@ attackTimer = 0;        // Counter for the current attack
 comboResetTimer = 0;    // Counter to reset combo to 1 if you wait too long
 enemy_hit_list = ds_list_create(); // Prevents multi-hits in one swing
 
-// --- CHARGE ATTACK VARIABLES ---
-isCharging = false;      // Are we currently holding D?
-chargeTimer = 0;         // How long have we held D?
-chargeLevel = 0;         // 1, 2, or 3
-hasSpawnedHitbox = false;// Ensures hitbox only creates once per swing
