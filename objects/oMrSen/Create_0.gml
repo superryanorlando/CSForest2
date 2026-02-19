@@ -1,5 +1,5 @@
 // --- CORE STATS ---
-maxHP = 33;
+maxHP = 1;
 hp = maxHP;
 state = "IDLE";
 timer = 0;
