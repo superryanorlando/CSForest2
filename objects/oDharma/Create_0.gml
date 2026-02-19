@@ -1,6 +1,6 @@
 // --- BASICS ---
-hp = 100;
-maxHP = 100;
+hp = 50;
+maxHP = 50;
 hpPrev = hp;
 flashTimer = 0;
 dead = false;

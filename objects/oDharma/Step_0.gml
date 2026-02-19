@@ -140,11 +140,10 @@ switch (state) {
         ySpeed += grav;
         y += ySpeed;
         
-        // Precise Landing Check: 
-        // If we are falling (ySpeed > 0) and have passed the target height
+        
         if (ySpeed > 0 && y >= targetY) {
-            y = targetY; // Snap to the top of the totem
-            x = targetX; // Snap to the center of the totem
+            y = targetY; 
+            x = targetX; //basically snaps to totem
             ySpeed = 0;
             xSpeed = 0;
             state = "ON_TOTEM";

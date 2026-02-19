@@ -15,9 +15,9 @@ for (var i = 0; i < maxHP; i++) {
     draw_sprite_ext(
         spr_hp, 
         -1, 
-        start_x + i * (seg_w * scale), 
+        start_x + i * (seg_w * scale*2), 
         draw_y, 
-        scale,       
+        scale*2,       
         scale,   
         0,       
         c_black, 
@@ -30,9 +30,9 @@ for (var i = 0; i < hp; i++) {
     draw_sprite_ext(
         spr_hp, 
         -1, 
-        start_x + i * (seg_w * scale), 
+        start_x + i * (seg_w * scale*2), 
         draw_y, 
-        scale,       
+        scale*2,       
         scale,   
         0,       
         c_white, 
