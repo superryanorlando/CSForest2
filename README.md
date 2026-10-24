@@ -14,8 +14,9 @@ Thanks for downloading CS FOREST 2!! We've worked hard to try and create a quali
 Arrow keys - directional movement
 Z - jump
 X - attack
-(add more later)
+C - throw energy projectile (after beating Dharma)
 
 ///////////////////////////
 
-ill finish this later - ryan
+**Story:**
+Mr. Sen is at is again! With 3 comp-sci kids under his evil influence, he's commanded them to take down you, Goddard, before his plans are foiled once more. 
